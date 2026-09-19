@@ -25,3 +25,37 @@
 /* Logo tile: same size in the marquee and on the full list pages. */
 .sx-logo img { filter: grayscale(1); opacity: .75; transition: filter .2s, opacity .2s; }
 .sx-logo:hover img, .sx-logo:focus-within img { filter: none; opacity: 1; }
+
+/* ---------- Cart / inquiry drawer (Figma 1455:5952, 1455:6186, 1455:6401) ---------- */
+html.sx-lock { overflow: hidden; }
+.sx-scrim { position: fixed; inset: 0; z-index: 90; background: rgba(0, 0, 0, .45); opacity: 0; pointer-events: none; transition: opacity .25s ease; }
+.sx-scrim.is-open { opacity: 1; pointer-events: auto; }
+.sx-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 100; width: 100%; max-width: 480px;
+  display: flex; flex-direction: column; background: #fff; border-left: 1px solid #e0e0e0;
+  box-shadow: -4px 0 16px rgba(0, 0, 0, .15);
+  transform: translateX(100%); visibility: hidden; transition: transform .28s cubic-bezier(.32, .72, 0, 1), visibility 0s linear .28s;
+}
+.sx-drawer.is-open { transform: none; visibility: visible; transition: transform .28s cubic-bezier(.32, .72, 0, 1); }
+.sx-drawer :focus-visible, .sx-toast :focus-visible { outline: 2px solid #2b3990; outline-offset: 2px; }
+.sx-body { flex: 1 1 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+
+.sx-toast-region { position: fixed; z-index: 120; bottom: 1.5rem; right: 1.5rem; display: flex; flex-direction: column; gap: .5rem; width: min(24rem, calc(100vw - 2rem)); pointer-events: none; }
+.sx-toast-region.is-left { right: auto; left: 1.5rem; }
+.sx-toast { pointer-events: auto; animation: sx-toast-in .22s ease-out; }
+@keyframes sx-toast-in { from { opacity: 0; transform: translateY(8px); } }
+@media (max-width: 640px) { .sx-toast-region, .sx-toast-region.is-left { left: 1rem; right: 1rem; width: auto; bottom: 1rem; } }
+
+.sx-spin { width: 16px; height: 16px; border-radius: 9999px; border: 2px solid rgba(255, 255, 255, .4); border-top-color: #fff; animation: sx-rot .7s linear infinite; }
+@keyframes sx-rot { to { transform: rotate(360deg); } }
+.sx-bump { animation: sx-bump .35s ease; }
+@keyframes sx-bump { 40% { transform: scale(1.18); } }
+.sx-btn-added { background: #e6f4ea !important; border-color: #10b981 !important; }
+.sx-step:disabled { opacity: .4; cursor: not-allowed; }
+.sx-field-error { border-color: #bb0017 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sx-drawer, .sx-drawer.is-open, .sx-scrim { transition: none; }
+  .sx-toast, .sx-bump { animation: none; }
+  .sx-spin { animation-duration: 1.6s; }
+}

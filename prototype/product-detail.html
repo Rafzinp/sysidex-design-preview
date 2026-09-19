@@ -81,10 +81,11 @@ tailwind.config = {
       </button>
     </form>
     <div class="flex items-center gap-6 ml-auto shrink-0">
-      <a href="#cart" class="flex items-center gap-2.5 plex text-sm">
+      <button type="button" data-sx-cart aria-haspopup="dialog" aria-label="Open cart, 0 items" class="relative flex items-center gap-2.5 plex text-sm">
         <img src="../assets/icons/icon-cart.svg" alt="" width="20" height="18">
-        <span class="hidden sm:inline font-bold text-blue">0 Items</span>
-      </a>
+        <span data-sx-cart-badge class="hidden sm:hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-red text-white text-[10px] font-bold inline-flex items-center justify-center">0</span>
+        <span data-sx-cart-label class="hidden sm:inline font-bold text-blue">0 Items</span>
+      </button>
       <a href="#login" class="hidden lg:inline border-l border-bd pl-6 font-bold text-sm text-blue hover:underline">Login / Register</a>
     </div>
   </div>
@@ -106,12 +107,12 @@ tailwind.config = {
 
 <div class="border-b border-bd bg-warm3">
   <div class="max-w-[1440px] mx-auto px-6 md:px-16 h-14 flex items-center gap-2 text-sm plex text-faint">
-    <a href="index.html" class="hover:text-red">Home</a><span class="text-bdlight">/</span><a href="products.html" class="hover:text-red">Products</a><span class="text-bdlight">/</span><span class="text-ink font-medium">UTI Tapes</span>
+    <a href="index.html" class="hover:text-red">Home</a><span class="text-bdlight">/</span><a href="products.html" class="hover:text-red">Products</a><span class="text-bdlight">/</span><span id="crumb-current" class="text-ink font-medium">UTI Tapes</span>
   </div>
 </div>
 
 <main id="main">
-  <div class="max-w-[1440px] mx-auto px-6 md:px-16 pt-6">
+  <div data-uti-only class="max-w-[1440px] mx-auto px-6 md:px-16 pt-6">
     <div class="flex flex-wrap gap-2">
       <span class="text-xs plex uppercase border border-bd px-3 py-1 text-faint rounded-full">Marine Instrumentation</span>
       <span class="text-xs plex uppercase border border-bd px-3 py-1 text-faint rounded-full">Liquid Measurement</span>
@@ -124,33 +125,30 @@ tailwind.config = {
   <section class="max-w-[1440px] mx-auto px-6 md:px-16 py-12">
     <div class="grid md:grid-cols-2 gap-12">
       <div>
-        <div class="aspect-square bg-warm1 border border-bd overflow-hidden rounded-card">
+        <div id="pd-main" class="aspect-square bg-warm1 border border-bd overflow-hidden rounded-card relative">
           <img src="../assets/images/products/uti-tape-main.jpg" alt="UTI Tape product" class="w-full h-full object-cover">
         </div>
-        <div class="grid grid-cols-3 gap-4 mt-4">
+        <div data-uti-only class="grid grid-cols-3 gap-4 mt-4">
           <div class="aspect-square bg-warm1 border-2 border-blue overflow-hidden rounded-lg"><img src="../assets/images/products/uti-tape-thumb1.jpg" alt="" class="w-full h-full object-cover"></div>
           <div class="aspect-square bg-warm1 border border-bd overflow-hidden rounded-lg"><img src="../assets/images/products/uti-tape-thumb2.jpg" alt="" class="w-full h-full object-cover"></div>
           <div class="aspect-square bg-warm3 border border-bd flex items-center justify-center text-xs plex font-bold text-body rounded-lg">+3 More</div>
         </div>
       </div>
       <div>
-        <h1 class="text-[32px] font-bold text-ink leading-tight">UTI Tapes</h1>
-        <p class="text-body mt-2">UTI Tapes Supplier in Qatar, Doha</p>
+        <h1 id="pd-title" class="text-[32px] font-bold text-ink leading-tight">UTI Tapes</h1>
+        <p id="pd-sub" class="text-body mt-2">UTI Tapes Supplier in Qatar, Doha</p>
         <div class="flex items-center gap-4 mt-4">
-          <span class="flex items-center gap-2 text-sm font-semibold text-ink"><span class="w-2 h-2 rounded-full bg-green-600"></span> In Stock</span>
-          <span class="text-xs text-faint">SKU: BSH-UTI-091</span>
+          <span data-uti-only class="flex items-center gap-2 text-sm font-semibold text-ink"><span class="w-2 h-2 rounded-full bg-green-600"></span> In Stock</span>
+          <span id="pd-sku" class="text-xs text-faint">SKU: BSH-UTI-091</span>
         </div>
-        <p class="text-body text-sm leading-relaxed mt-6">Designed for high precision ullage, temperature, and oil-water interface detection in hazardous marine tanks. Hermetically sealed design ensures zero gas emission, matching the rigorous international maritime safety standards.</p>
-        <ul class="space-y-2 mt-6 text-sm">
+        <p data-uti-only class="text-body text-sm leading-relaxed mt-6">Designed for high precision ullage, temperature, and oil-water interface detection in hazardous marine tanks. Hermetically sealed design ensures zero gas emission, matching the rigorous international maritime safety standards.</p>
+        <ul data-uti-only class="space-y-2 mt-6 text-sm">
           <li class="flex items-center gap-2"><img src="../assets/icons/icon-chevron-tiny.svg" alt="" width="4" height="7"> Brand: Bushtorm Certified Engineering</li>
           <li class="flex items-center gap-2"><img src="../assets/icons/icon-chevron-tiny.svg" alt="" width="4" height="7"> Category: Marine Instrumentation, Rigging &amp; Safety</li>
           <li class="flex items-center gap-2"><img src="../assets/icons/icon-chevron-tiny.svg" alt="" width="4" height="7"> Delivery: Fast Delivery to Doha, Ras Laffan, Mesaieed</li>
         </ul>
-        <div class="flex flex-wrap gap-4 mt-8">
-          <button class="inline-flex items-center gap-2 h-[48px] px-8 bg-red text-white text-sm plex font-bold uppercase tracking-wide hover:bg-[#970012] transition-colors"><img src="../assets/icons/icon-add-cart.svg" alt="" width="16" height="16"> Add to Cart</button>
-          <a href="contact.html" class="inline-flex items-center h-[48px] px-8 border border-bd text-ink text-sm plex font-bold uppercase tracking-wide hover:bg-warm3 transition-colors">Request Quote</a>
-        </div>
-        <div class="bg-warm3 border border-bd p-4 text-sm mt-8 rounded-card">
+        <div id="pd-actions"><noscript><a href="contact.html" class="inline-flex items-center h-[48px] px-8 bg-red text-white text-sm plex font-bold uppercase tracking-wide mt-8">Request Quote</a></noscript></div>
+        <div id="pd-about" class="bg-warm3 border border-bd p-4 text-sm mt-8 rounded-card">
           <p class="font-semibold text-ink mb-1">About this item</p>
           <p class="text-body">This UTI tape is a gas-tight portable liquid level sensor designed for restricted oil-water measurement. Equipped with an anti-static tape and spark-proof construction, it guarantees certified safety operation in Zone 0, Zone 1, and Zone 2 environments.</p>
         </div>
@@ -158,7 +156,7 @@ tailwind.config = {
     </div>
   </section>
 
-  <section class="max-w-[1440px] mx-auto px-6 md:px-16">
+  <section data-uti-only class="max-w-[1440px] mx-auto px-6 md:px-16">
     <div class="flex gap-8 border-b border-bd text-sm plex uppercase tracking-wide">
       <a href="#description" class="py-4 border-b-2 border-red text-red font-semibold">Product Description</a>
       <a href="#specs" class="py-4 border-b-2 border-transparent text-faint hover:text-ink">Technical Specifications</a>
@@ -166,7 +164,7 @@ tailwind.config = {
     </div>
   </section>
 
-  <section id="description" class="max-w-[1440px] mx-auto px-6 md:px-16 py-16">
+  <section data-uti-only id="description" class="max-w-[1440px] mx-auto px-6 md:px-16 py-16">
     <p class="text-body leading-relaxed max-w-3xl">In complex marine tankers and bulk storage facilities, knowing the exact volume of your cargo while maintaining safety protocols is paramount. The Bushtorm certified Ullage Temperature Interface (UTI) Tape represents the peak of portable liquid level indicators. Designed to work hermetically, these systems prevent hazardous gas leaks from escaping while taking critical measurements.</p>
     <h3 class="text-xl font-bold text-ink mt-10 mb-3">What is a UTI Tape?</h3>
     <p class="text-body leading-relaxed max-w-3xl">A UTI Tape is an intrinsically safe, portable measurement device that collects three key metrics in a single drop: Ullage (the distance between the cargo surface and the tank top), Temperature profile, and the Interface level between oil and water phases. This 3-in-1 measurement system drastically reduces operating time and exposure risks.</p>
@@ -180,7 +178,7 @@ tailwind.config = {
     </ul>
   </section>
 
-  <section id="specs" class="max-w-[1440px] mx-auto px-6 md:px-16 py-16 border-t border-bd">
+  <section data-uti-only id="specs" class="max-w-[1440px] mx-auto px-6 md:px-16 py-16 border-t border-bd">
     
       <div class="flex items-end justify-between border-b border-bd pb-6 mb-10">
         <div>
@@ -235,7 +233,7 @@ tailwind.config = {
     </div>
   </section>
 
-  <section id="faq" class="max-w-[900px] mx-auto px-6 py-16 border-t border-bd">
+  <section data-uti-only id="faq" class="max-w-[900px] mx-auto px-6 py-16 border-t border-bd">
     <div class="text-center mb-10">
       <h2 class="text-[28px] font-bold text-blue">Frequently Asked Questions</h2>
       <p class="text-body mt-2">Get quick answers regarding installation, safety certifications, and operations.</p>
@@ -275,86 +273,7 @@ tailwind.config = {
         
       </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <article class="border border-bd bg-white group rounded-card overflow-hidden">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-impact-wrench.jpg" alt="Cordless Impact Wrench 20V Brushless Motor" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          <span class="absolute top-3 left-3 bg-red text-white text-[10px] plex uppercase tracking-wide px-2 py-1 rounded-md">New</span>
-          <button type="button" aria-label="Add Cordless Impact Wrench 20V Brushless Motor to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Power Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Cordless Impact Wrench 20V Brushless Motor</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Cordless Impact Wrench 20V Brushless Motor to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group rounded-card overflow-hidden">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-angle-grinder.jpg" alt="Angle Grinder 125mm 1200W Heavy Duty" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          
-          <button type="button" aria-label="Add Angle Grinder 125mm 1200W Heavy Duty to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Cutting Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Angle Grinder 125mm 1200W Heavy Duty</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Angle Grinder 125mm 1200W Heavy Duty to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group rounded-card overflow-hidden">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-circular-saw.jpg" alt="Circular Saw 185mm 1400W Professional" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          <span class="absolute top-3 left-3 bg-red text-white text-[10px] plex uppercase tracking-wide px-2 py-1 rounded-md">New</span>
-          <button type="button" aria-label="Add Circular Saw 185mm 1400W Professional to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Cutting Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Circular Saw 185mm 1400W Professional</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Circular Saw 185mm 1400W Professional to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group rounded-card overflow-hidden">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-jigsaw.jpg" alt="Electric Jigsaw 800W Variable Speed Control" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          
-          <button type="button" aria-label="Add Electric Jigsaw 800W Variable Speed Control to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Precision Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Electric Jigsaw 800W Variable Speed Control</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Electric Jigsaw 800W Variable Speed Control to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-</div>
+    <div data-related class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
   </section>
 
   <section class="border-y border-bd bg-warm2">
@@ -445,5 +364,8 @@ tailwind.config = {
     </div>
   </div>
 </footer>
+<script src="../assets/js/catalog.js"></script>
+<script src="../assets/js/commerce.js"></script>
+<script src="../assets/js/ui.js"></script>
 </body>
 </html>

@@ -123,21 +123,35 @@
       '<g transform="translate(160 120) scale(1.12)" stroke="' + t.ink + '" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">' + GLYPH[p.art](t) + '</g></svg>';
   }
 
-  /* ---------- Product card (one component for home, listings, search) ---------- */
+  /* ---------- Product card (one component for home, listings, search, related) ----------
+     Priced product  -> price + "Add to cart" icon button (Figma card action)
+     Quote-only      -> "Price on request" + "Sales Inquiry" button
+     Both open the same shared drawer (commerce.js), so every card behaves the same way. */
+  function money(n) { return SX.SHOP.currency + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+
   function cardHTML(p) {
     var c = SX.CATS[p.cat];
+    var url = 'product-detail.html?id=' + encodeURIComponent(p.id);
     var media = p.img
-      ? '<img src="' + IMG + p.img + '" alt="' + esc(p.title) + '" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out">'
+      ? '<img src="' + IMG + p.img + '" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out">'
       : art(p);
+    var btn = 'bg-[#f0eded] hover:bg-[#e6dfdc] rounded-lg flex items-center justify-center transition-colors';
+    var action = p.price
+      ? '<button type="button" data-sx-add="' + esc(p.id) + '" aria-label="Add ' + esc(p.title) + ' to cart" title="Add to cart" class="w-8 h-8 ' + btn + '"><img src="' + ICON + 'icon-add-cart-2.svg" alt="" width="15" height="15"></button>'
+      : '<button type="button" data-sx-inquire="' + esc(p.id) + '" data-sx-from="listing" aria-label="Sales inquiry about ' + esc(p.title) + '" class="h-8 px-3 whitespace-nowrap text-[11px] plex font-bold uppercase tracking-wide text-ink ' + btn + '">Sales Inquiry</button>';
+    var price = p.price
+      ? '<span class="text-sm font-extrabold text-[#1b2a4a] whitespace-nowrap">' + money(p.price) + '</span>'
+      : '<span class="text-xs plex text-faint whitespace-nowrap">Price on request</span>';
     return '<article class="group flex flex-col bg-white border border-bd rounded-card overflow-hidden transition-shadow hover:shadow-card">' +
-      '<a href="product-detail.html" class="relative block aspect-[4/3] bg-warm1 overflow-hidden" aria-label="' + esc(p.title) + '">' + media +
-      (p.isNew ? '<span class="absolute top-3 left-3 bg-red text-white text-[10px] plex uppercase tracking-wide px-2 py-1 rounded-md">New</span>' : '') +
-      '<button type="button" aria-label="Add ' + esc(p.title) + ' to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red"><img src="' + ICON + 'icon-wishlist.svg" alt="" width="16" height="16"></button>' +
-      '</a>' +
+      '<div class="relative">' +
+      '<a href="' + url + '" class="relative block aspect-[4/3] bg-warm1 overflow-hidden" aria-label="' + esc(p.title) + '">' + media +
+      (p.isNew ? '<span class="absolute top-3 left-3 bg-red text-white text-[10px] plex uppercase tracking-wide px-2 py-1 rounded-md">New</span>' : '') + '</a>' +
+      '<button type="button" data-sx-wish="' + esc(p.id) + '" aria-pressed="false" aria-label="Save ' + esc(p.title) + ' to wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red"><img src="' + ICON + 'icon-wishlist.svg" alt="" width="16" height="16"></button>' +
+      '</div>' +
       '<div class="p-5 flex flex-col flex-1">' +
       '<p class="flex items-center gap-2 text-xs plex text-faint"><span class="w-2 h-2 rounded-full shrink-0" style="background:' + c.color + '"></span>' + esc(c.short) + ' · ' + esc(p.sub) + '</p>' +
-      '<h3 class="font-bold text-ink text-sm mt-1.5 leading-snug flex-1"><a href="product-detail.html" class="hover:text-red">' + esc(p.title) + '</a></h3>' +
-      '<div class="flex items-center justify-end mt-4"><button type="button" aria-label="Add ' + esc(p.title) + ' to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center"><img src="' + ICON + 'icon-add-cart-2.svg" alt="" width="15" height="15"></button></div>' +
+      '<h3 class="font-bold text-ink text-sm mt-1.5 leading-snug flex-1"><a href="' + url + '" class="hover:text-red">' + esc(p.title) + '</a></h3>' +
+      '<div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 mt-4">' + price + action + '</div>' +
       '</div></article>';
   }
 
@@ -278,6 +292,16 @@
     }
   }
 
+  /* ---------- Detail page: related products (same category, never the current item) ---------- */
+  function initRelated() {
+    var el = $('[data-related]');
+    if (!el) return;
+    var id = new URLSearchParams(location.search).get('id') || 'uti-tape';
+    var cur = SX.PRODUCTS.filter(function (p) { return p.id === id; })[0] || SX.PRODUCTS[0];
+    var list = SX.PRODUCTS.filter(function (p) { return p.cat === cur.cat && p.id !== cur.id; }).slice(0, 4);
+    setHTML(el, list.map(cardHTML).join(''));
+  }
+
   /* ---------- Home: latest products ---------- */
   function initLatest() {
     var el = $('[data-latest]');
@@ -341,9 +365,11 @@
     var scope = document.body.getAttribute('data-scope');
     if (scope) initListing(scope);
     initLatest();
+    initRelated();
     document.querySelectorAll('[data-logos]').forEach(initMarquee);
     document.querySelectorAll('[data-logo-grid]').forEach(initLogoGrid);
     initPause();
   }
+  SX.ui = { art: art, cardHTML: cardHTML };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

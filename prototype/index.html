@@ -81,10 +81,11 @@ tailwind.config = {
       </button>
     </form>
     <div class="flex items-center gap-6 ml-auto shrink-0">
-      <a href="#cart" class="flex items-center gap-2.5 plex text-sm">
+      <button type="button" data-sx-cart aria-haspopup="dialog" aria-label="Open cart, 0 items" class="relative flex items-center gap-2.5 plex text-sm">
         <img src="../assets/icons/icon-cart.svg" alt="" width="20" height="18">
-        <span class="hidden sm:inline font-bold text-blue">0 Items</span>
-      </a>
+        <span data-sx-cart-badge class="hidden sm:hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-red text-white text-[10px] font-bold inline-flex items-center justify-center">0</span>
+        <span data-sx-cart-label class="hidden sm:inline font-bold text-blue">0 Items</span>
+      </button>
       <a href="#login" class="hidden lg:inline border-l border-bd pl-6 font-bold text-sm text-blue hover:underline">Login / Register</a>
     </div>
   </div>
@@ -449,6 +450,7 @@ tailwind.config = {
   </div>
 </footer>
 <script src="../assets/js/catalog.js"></script>
+<script src="../assets/js/commerce.js"></script>
 <script src="../assets/js/ui.js"></script>
 </body>
 </html>

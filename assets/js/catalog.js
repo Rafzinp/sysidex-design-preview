@@ -4,6 +4,8 @@
 
   Product fields:
     id, cat (industrial | iot | engineering), sub (sub-category label), title, code (searchable),
+    price (USD number; PLACEHOLDER values except the impact wrench from the Figma cart). A product WITH a
+    price is sold through Add to Cart; a product WITHOUT one is quote-only ("Sales Inquiry").
     kw (extra search words), isNew, latest (shown in "Latest Products" on the home page),
     img (path under assets/images, for real photos) OR art (key of the line-art illustration).
   To use a real photo for an IoT / Engineering item later, replace `art` with `img`.
@@ -26,18 +28,20 @@ window.SX = (function () {
 
   var PRODUCTS = [
     // Industrial & Retail: real product photography
-    { id: 'impact-wrench', cat: 'industrial', sub: 'Power Tools', title: 'Cordless Impact Wrench 20V Brushless Motor', img: 'products/product-impact-wrench.jpg', isNew: true, latest: true, code: 'IND-001', kw: 'battery torque' },
-    { id: 'angle-grinder', cat: 'industrial', sub: 'Cutting Tools', title: 'Angle Grinder 125mm 1200W Heavy Duty', img: 'products/product-angle-grinder.jpg', code: 'IND-002', kw: 'grinding disc' },
-    { id: 'circular-saw', cat: 'industrial', sub: 'Cutting Tools', title: 'Circular Saw 185mm 1400W Professional', img: 'products/product-circular-saw.jpg', isNew: true, code: 'IND-003', kw: 'blade wood' },
-    { id: 'jigsaw', cat: 'industrial', sub: 'Precision Tools', title: 'Electric Jigsaw 800W Variable Speed Control', img: 'products/product-jigsaw.jpg', code: 'IND-004', kw: 'curve cut' },
-    { id: 'reciprocating-saw', cat: 'industrial', sub: 'Demolition Tools', title: 'Reciprocating Saw 1100W Quick-Change', img: 'products/product-reciprocating-saw.jpg', code: 'IND-005', kw: 'sabre demolition' },
-    { id: 'orbital-sander', cat: 'industrial', sub: 'Finishing Tools', title: 'Orbital Sander 350W Dust Collection System', img: 'products/product-orbital-sander.jpg', isNew: true, code: 'IND-006', kw: 'sanding dust' },
-    { id: 'heat-gun', cat: 'industrial', sub: 'Specialty Tools', title: 'Heat Gun 2000W Dual Temperature Mode', img: 'products/product-heat-gun.jpg', code: 'IND-007', kw: 'thermal paint' },
-    { id: 'rotary-hammer', cat: 'industrial', sub: 'Drilling Tools', title: 'Rotary Hammer SDS-Plus 800W Anti-Vibration', img: 'products/product-rotary-hammer.jpg', code: 'IND-008', kw: 'drill concrete sds' },
-    { id: 'hammer-drill', cat: 'industrial', sub: 'Power Tools', title: 'Brushless Hammer Drill 18V High Torque', img: 'products/product-hammer-drill.jpg', isNew: true, code: 'IND-009', kw: 'cordless drilling' },
-    { id: 'belt-sander', cat: 'industrial', sub: 'Finishing Tools', title: 'Belt Sander 900W Variable Speed Heavy Duty', img: 'products/product-belt-sander.jpg', code: 'IND-010', kw: 'sanding belt' },
-    { id: 'mitre-saw', cat: 'industrial', sub: 'Cutting Tools', title: 'Mitre Saw 254mm Slide Compound 1800W', img: 'products/product-mitre-saw.jpg', code: 'IND-011', kw: 'compound slide' },
-    { id: 'screwdriver', cat: 'industrial', sub: 'Power Tools', title: 'Cordless Screwdriver 3.6V USB Rechargeable', img: 'products/product-cordless-screwdriver.jpg', code: 'IND-012', kw: 'usb rechargeable' },
+    { id: 'impact-wrench', price: 189.00, cat: 'industrial', sub: 'Power Tools', title: 'Cordless Impact Wrench 20V Brushless Motor', img: 'products/product-impact-wrench.jpg', isNew: true, latest: true, code: 'IND-001', kw: 'battery torque' },
+    { id: 'angle-grinder', price: 64.00, cat: 'industrial', sub: 'Cutting Tools', title: 'Angle Grinder 125mm 1200W Heavy Duty', img: 'products/product-angle-grinder.jpg', code: 'IND-002', kw: 'grinding disc' },
+    { id: 'circular-saw', price: 119.00, cat: 'industrial', sub: 'Cutting Tools', title: 'Circular Saw 185mm 1400W Professional', img: 'products/product-circular-saw.jpg', isNew: true, code: 'IND-003', kw: 'blade wood' },
+    { id: 'jigsaw', price: 79.50, cat: 'industrial', sub: 'Precision Tools', title: 'Electric Jigsaw 800W Variable Speed Control', img: 'products/product-jigsaw.jpg', code: 'IND-004', kw: 'curve cut' },
+    { id: 'reciprocating-saw', price: 109.00, cat: 'industrial', sub: 'Demolition Tools', title: 'Reciprocating Saw 1100W Quick-Change', img: 'products/product-reciprocating-saw.jpg', code: 'IND-005', kw: 'sabre demolition' },
+    { id: 'orbital-sander', price: 84.00, cat: 'industrial', sub: 'Finishing Tools', title: 'Orbital Sander 350W Dust Collection System', img: 'products/product-orbital-sander.jpg', isNew: true, code: 'IND-006', kw: 'sanding dust' },
+    { id: 'heat-gun', price: 46.50, cat: 'industrial', sub: 'Specialty Tools', title: 'Heat Gun 2000W Dual Temperature Mode', img: 'products/product-heat-gun.jpg', code: 'IND-007', kw: 'thermal paint' },
+    { id: 'rotary-hammer', price: 149.00, cat: 'industrial', sub: 'Drilling Tools', title: 'Rotary Hammer SDS-Plus 800W Anti-Vibration', img: 'products/product-rotary-hammer.jpg', code: 'IND-008', kw: 'drill concrete sds' },
+    { id: 'hammer-drill', price: 129.00, cat: 'industrial', sub: 'Power Tools', title: 'Brushless Hammer Drill 18V High Torque', img: 'products/product-hammer-drill.jpg', isNew: true, code: 'IND-009', kw: 'cordless drilling' },
+    { id: 'belt-sander', price: 99.00, cat: 'industrial', sub: 'Finishing Tools', title: 'Belt Sander 900W Variable Speed Heavy Duty', img: 'products/product-belt-sander.jpg', code: 'IND-010', kw: 'sanding belt' },
+    { id: 'mitre-saw', price: 259.00, cat: 'industrial', sub: 'Cutting Tools', title: 'Mitre Saw 254mm Slide Compound 1800W', img: 'products/product-mitre-saw.jpg', code: 'IND-011', kw: 'compound slide' },
+    { id: 'screwdriver', price: 27.50, cat: 'industrial', sub: 'Power Tools', title: 'Cordless Screwdriver 3.6V USB Rechargeable', img: 'products/product-cordless-screwdriver.jpg', code: 'IND-012', kw: 'usb rechargeable' },
+
+    { id: 'uti-tape', cat: 'industrial', sub: 'Marine Instrumentation', title: 'UTI Tape (Ullage Temperature Interface)', img: 'products/uti-tape-main.jpg', code: 'BSH-UTI-091', kw: 'ullage temperature interface marine tank gauge zone 0 explosion proof' },
 
     // IoT & Smart Solutions: line-art illustrations (placeholders until real photography is supplied)
     { id: 'parcel-locker', cat: 'iot', sub: 'Smart Lockers', title: 'Smart Parcel Locker System', art: 'locker', isNew: true, latest: true, code: 'IOT-001', kw: 'parcel delivery access control' },
@@ -55,6 +59,9 @@ window.SX = (function () {
     { id: 'elevator-modernisation', cat: 'engineering', sub: 'Elevator Solutions', title: 'Elevator Modernisation', art: 'elevator', isNew: true, latest: true, code: 'ENG-005', kw: 'lift upgrade vertical transport' },
     { id: 'elevator-emergency', cat: 'engineering', sub: 'Elevator Solutions', title: '24/7 Emergency Elevator Support', art: 'emergency', code: 'ENG-006', kw: 'lift breakdown call-out' }
   ];
+
+  // Cart / order settings shared by every page.
+  var SHOP = { currency: '$', maxQty: 99 };
 
   // Logos. Add as many as needed: the home page shows the first few in a marquee,
   // "View all" opens the full list page.
@@ -76,5 +83,5 @@ window.SX = (function () {
     ]
   };
 
-  return { CATS: CATS, PRODUCTS: PRODUCTS, LOGOS: LOGOS };
+  return { CATS: CATS, PRODUCTS: PRODUCTS, LOGOS: LOGOS, SHOP: SHOP };
 })();
