@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+THESIS: An industrial B2B homepage rebuilt exactly from the approved Sysidex Figma comp — engineering trust over ornament.
+OWN-WORLD: Sysidex indigo (#2b3990/#10207a) fields, signal-red CTAs, precise Hanken Grotesk headings paired with tracked IBM Plex Sans uppercase labels, hairline #e0e0e0 borders as the only ornament.
+STORY: A Qatari industrial buyer lands, understands Sysidex spans tools/rigging/explosion-proof/smart/elevators in one vendor, sees proof (stats, partners, testimonials), and either explores the catalog or requests a quote.
+FIRST VIEWPORT: Full-bleed indigo hero, eyebrow + two-line headline + subcopy + two CTAs on the left, faded industrial photo bleeding right, stats bar anchoring the bottom edge.
+FORM: Comp reproduction (approved Figma comp is authoritative) — no direction roll, per new-work.md "comp is king".
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sysidex — Engineering Excellence for Industrial Qatar</title>
+<meta name="description" content="Sysidex is a multifunctional corporation specializing in automated services, engineering supplies, and advanced smart solutions for Qatar's industrial sector.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preload" as="image" href="assets/images/hero-bg.png" fetchpriority="high">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="utility-bar">
+    <div class="row">
+      <div class="utility-left">
+        <a class="utility-item" href="tel:+97460622239">
+          <img src="assets/icons/icon-phone-small.svg" alt="" width="12" height="12">
+          <span>Call us for free: +974 60622239</span>
+        </a>
+        <a class="utility-item" href="mailto:shop@bushtorm.com">
+          <img src="assets/icons/icon-mail-small.svg" alt="" width="13" height="11">
+          <span>Email: shop@bushtorm.com</span>
+        </a>
+      </div>
+      <div class="utility-right">
+        <a href="#about">About Us</a>
+        <span class="divider" aria-hidden="true">|</span>
+        <a href="#contact">Contact Us</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-header">
+    <div class="row">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo-sysidex.png" alt="Sysidex" width="98" height="40">
+      </a>
+
+      <form class="search-bar" role="search" action="#" onsubmit="return false;">
+        <label class="visually-hidden" for="site-search">Search for products, codes, or specs</label>
+        <input id="site-search" type="search" placeholder="Search for products, codes, or specs...">
+        <button type="submit" aria-label="Search">
+          <img src="assets/icons/icon-search.svg" alt="" width="18" height="18">
+        </button>
+      </form>
+
+      <div class="cart-account">
+        <a href="#cart" class="cart-link">
+          <img src="assets/icons/icon-cart.svg" alt="" width="20" height="20">
+          <span class="cart-copy">
+            <span class="cart-label">CART</span>
+            <span class="cart-count">0 Items</span>
+          </span>
+        </a>
+        <div class="account-block">
+          <span class="account-welcome">Welcome</span>
+          <a href="#login" class="account-login">Login / Register</a>
+        </div>
+      </div>
+
+      <button class="mobile-nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="nav-bar" aria-label="Primary">
+    <div class="row nav-row">
+      <button class="all-categories">
+        <img src="assets/icons/icon-grid.svg" alt="" width="14" height="9">
+        <span>All Categories</span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#lifting">Lifting Equipments</a></li>
+        <li><a href="#explosion-proof">Explosion Proof</a></li>
+        <li><a href="#rigging">Rigging Equipments</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#consumables">Consumables</a></li>
+        <li><a href="#chemicals">Chemicals</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="mobile-nav" class="mobile-nav" hidden>
+    <ul>
+      <li><a href="#lifting">Lifting Equipments</a></li>
+      <li><a href="#explosion-proof">Explosion Proof</a></li>
+      <li><a href="#rigging">Rigging Equipments</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#consumables">Consumables</a></li>
+      <li><a href="#chemicals">Chemicals</a></li>
+      <li class="mobile-nav-divider"></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-media" aria-hidden="true">
+      <img src="assets/images/hero-bg.png" alt="" width="512" height="232" fetchpriority="high">
+      <div class="hero-gradient"></div>
+    </div>
+    <div class="hero-content">
+      <p class="eyebrow"><span class="eyebrow-dot"></span>Industrial Solutions</p>
+      <h1>Engineering Excellence for<br>Industrial Qatar</h1>
+      <p class="hero-copy">Sysidex is a multifunctional corporation specializing in automated services, engineering supplies, and advanced smart solutions tailored for the high-demand industrial sector.</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn btn-primary">Explore Products</a>
+        <a href="#contact" class="btn btn-ghost">Contact Engineering</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="row stats-row">
+        <div class="stat">
+          <span class="stat-value">100+</span>
+          <span class="stat-label">Projects Delivered</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">24hrs</span>
+          <span class="stat-label">Response Time</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">15</span>
+          <span class="stat-label">Industries Served</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value stat-accent">99.9%</span>
+          <span class="stat-label">System Uptime</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="awards" aria-label="Trusted and accredited">
+    <div class="section-inner awards-inner">
+      <p class="awards-label">Trusted &amp; Accredited</p>
+      <div class="awards-badges">
+        <img src="assets/icons/badge-egac.png" alt="EGAC Accreditation" width="84" height="64">
+        <img src="assets/icons/badge-iaf.png" alt="IAF Member — Multilateral Recognition Arrangement" width="84" height="64">
+        <img src="assets/icons/badge-qro.png" alt="QRO — Quality Research Organization" width="84" height="64">
+      </div>
+    </div>
+  </section>
+
+  <section class="products" id="products" aria-labelledby="products-heading">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <h2 id="products-heading">Latest Products</h2>
+          <p class="section-sub">New additions to our industrial catalog.</p>
+        </div>
+        <a href="#" class="text-link">
+          View All Products
+          <img src="assets/icons/icon-chevron-right.svg" alt="" width="9" height="9">
+        </a>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-media has-image">
+            <img src="assets/images/product-locker.jpg" alt="Smart Parcel Locker System Modular" width="900" height="281" loading="lazy">
+            <span class="badge badge-new">New</span>
+          </div>
+          <div class="product-body">
+            <p class="product-category">Smart Solutions</p>
+            <h3 class="product-title">Smart Parcel Locker System Modular</h3>
+            <div class="product-foot">
+              <span class="product-price product-price--cta">Contact Sales</span>
+              <button class="icon-btn" aria-label="Add Smart Parcel Locker System Modular to cart">
+                <img src="assets/icons/icon-add-cart.svg" alt="" width="16" height="16">
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <img src="assets/icons/icon-drill.svg" alt="" class="product-glyph" width="32" height="36">
+            <span class="badge badge-new">New</span>
+          </div>
+          <div class="product-body">
+            <p class="product-category">Industrial Tools</p>
+            <h3 class="product-title">Heavy Duty Hammer Drill 1500W Professional</h3>
+            <div class="product-foot">
+              <span class="product-price">QAR 850.00</span>
+              <button class="icon-btn" aria-label="Add Heavy Duty Hammer Drill 1500W Professional to cart">
+                <img src="assets/icons/icon-add-cart.svg" alt="" width="16" height="16">
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <img src="assets/icons/icon-rope.svg" alt="" class="product-glyph" width="36" height="36">
+            <span class="badge badge-new">New</span>
+          </div>
+          <div class="product-body">
+            <p class="product-category">Rigging Equipment</p>
+            <h3 class="product-title">Galvanized Steel Wire Rope 16mm Heavy Lifting</h3>
+            <div class="product-foot">
+              <span class="product-price">QAR 45.00 / m</span>
+              <button class="icon-btn" aria-label="Add Galvanized Steel Wire Rope 16mm Heavy Lifting to cart">
+                <img src="assets/icons/icon-add-cart.svg" alt="" width="16" height="16">
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <img src="assets/icons/icon-light.svg" alt="" class="product-glyph" width="30" height="40">
+            <span class="badge badge-new">New</span>
+          </div>
+          <div class="product-body">
+            <p class="product-category">Explosion Proof</p>
+            <h3 class="product-title">Explosion Proof LED Area Light Zone 1</h3>
+            <div class="product-foot">
+              <span class="product-price">QAR 1,200.00</span>
+              <button class="icon-btn" aria-label="Add Explosion Proof LED Area Light Zone 1 to cart">
+                <img src="assets/icons/icon-add-cart.svg" alt="" width="16" height="16">
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners partners-carousel" aria-label="Trusted partners and clients">
+    <p class="partners-label">Trusted Partners &amp; Clients</p>
+    <div class="carousel">
+      <button class="carousel-nav carousel-nav--prev" type="button" aria-label="Previous partners">
+        <img src="assets/icons/icon-chevron-left-nav.svg" alt="" width="16" height="16">
+      </button>
+      <div class="carousel-track">
+        <img src="assets/images/partner-saraya.png" alt="Saraya Corniche Hotel" width="149" height="78" loading="lazy">
+        <img src="assets/images/partner-qatargas.png" alt="Qatargas" width="134" height="70" loading="lazy">
+        <img src="assets/images/partner-qatarenergy.png" alt="QatarEnergy" width="134" height="70" loading="lazy">
+        <img src="assets/images/partner-moehe.png" alt="Ministry of Education and Higher Education, State of Qatar" width="134" height="70" loading="lazy">
+        <img src="assets/images/partner-qapco.png" alt="QAPCO — Qatar Petrochemical Company" width="134" height="70" loading="lazy">
+        <img src="assets/images/partner-ummalhoul.png" alt="Umm Al Houl Power" width="149" height="78" loading="lazy">
+      </div>
+      <button class="carousel-nav carousel-nav--next" type="button" aria-label="Next partners">
+        <img src="assets/icons/icon-chevron-right-nav.svg" alt="" width="16" height="16">
+      </button>
+    </div>
+    <div class="carousel-dots" role="tablist" aria-label="Partner slides">
+      <span class="dot is-active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
+
+  <section class="divisions" id="divisions" aria-labelledby="divisions-heading">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <h2 id="divisions-heading">Core Divisions</h2>
+          <p class="section-sub">Specialized equipment and solutions for rigorous industrial needs.</p>
+        </div>
+        <a href="#" class="text-link">
+          View All Divisions
+          <img src="assets/icons/icon-chevron-right.svg" alt="" width="9" height="9">
+        </a>
+      </div>
+
+      <div class="division-grid">
+        <article class="division-card">
+          <div class="division-top">
+            <img src="assets/icons/icon-div-tools.svg" alt="" class="division-icon" width="28" height="27">
+            <span class="division-tag">SRV-01</span>
+          </div>
+          <h3>Industrial &amp; Retail Solutions</h3>
+          <p>Industrial, electrical, mechanical, safety, networking, and retail technology products for diverse projects.</p>
+          <ul class="division-list">
+            <li><a href="#">Electrical &amp; Mechanical <img src="assets/icons/icon-chevron-tiny.svg" alt="" width="4" height="7"></a></li>
+            <li><a href="#">Safety &amp; ATEX <img src="assets/icons/icon-chevron-tiny.svg" alt="" width="4" height="7"></a></li>
+            <li><a href="#">IT &amp; Networking <img src="assets/icons/icon-chevron-tiny.svg" alt="" width="4" height="7"></a></li>
+          </ul>
+          <a href="#" class="division-link">
+            Explore Service
+            <img src="assets/icons/icon-chevron-red.svg" alt="" width="9" height="9">
+          </a>
+        </article>
+
+        <article class="division-card">
+          <div class="division-top">
+            <img src="assets/icons/icon-div-smart.svg" alt="" class="division-icon" width="33" height="29">
+            <span class="division-tag">SRV-02</span>
+          </div>
+          <h3>IoT &amp; Smart Solutions</h3>
+          <p>Connected technologies to automate operations, protect assets, control access, and enable real-time decisions.</p>
+          <ul class="division-list">
+            <li><a href="#">Smart Lockers <img src="assets/icons/icon-chevron-tiny.svg" alt="" width="4" height="7"></a></li>
+            <li><a href="#">RFID &amp; Asset Tracking <img src="assets/icons/icon-chevron-tiny.svg" alt="" width="4" height="7"></a></li>
+            <li><a href="#">Automation &amp; Monitoring <img src="assets/icons/icon-chevron-tiny.svg" alt="" width="4" height="7"></a></li>
+          </ul>
+          <a href="#" class="division-link">
+            Explore Service
+            <img src="assets/icons/icon-chevron-red.svg" alt="" width="9" height="9">
+          </a>
+        </article>
+
+        <article class="division-card">
+          <div class="division-top">
+            <img src="assets/icons/icon-div-elevator.svg" alt="" class="division-icon" width="27" height="27">
+            <span class="division-tag">SRV-03</span>
+          </div>
+          <h3>Engineering Services</h3>
+          <p>Complete engineering support covering installation, system integration, maintenance, and project execution.</p>
+          <ul class="division-list">
+            <li><a href="#">System Integration <img src="assets/icons/icon-chevron-tiny.svg" alt="" width="4" height="7"></a></li>
+            <li><a href="#">Maintenance &amp; AMC <img src="assets/icons/icon-chevron-tiny.svg" alt="" width="4" height="7"></a></li>
+            <li><a href="#">Elevator Solutions <img src="assets/icons/icon-chevron-tiny.svg" alt="" width="4" height="7"></a></li>
+          </ul>
+          <a href="#" class="division-link">
+            Explore Service
+            <img src="assets/icons/icon-chevron-red.svg" alt="" width="9" height="9">
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" aria-labelledby="testimonials-heading">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <h2 id="testimonials-heading">Client Insights</h2>
+          <p class="section-sub">Feedback from leaders in the industrial sector.</p>
+        </div>
+        <a href="#" class="text-link">
+          View All
+          <img src="assets/icons/icon-chevron-right.svg" alt="" width="9" height="9">
+        </a>
+      </div>
+      <div class="testimonial-grid">
+        <figure class="testimonial-card">
+          <img src="assets/icons/icon-quote.svg" alt="" class="quote-icon" width="34" height="24">
+          <blockquote>
+            <p>&ldquo;Sysidex provided exceptional automated locker solutions for our new facility. The precision of their installation and the robust software integration exceeded our expectations.&rdquo;</p>
+          </blockquote>
+          <figcaption>
+            <span class="avatar">AA</span>
+            <span class="author">
+              <span class="author-name">Ahmed Al-Sulaiti</span>
+              <span class="author-title">Operations Director, Logistics Hub</span>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <img src="assets/icons/icon-quote.svg" alt="" class="quote-icon" width="34" height="24">
+          <blockquote>
+            <p>&ldquo;Their elevator maintenance team is incredibly responsive and technically proficient. We have seen a significant reduction in downtime across our commercial properties.&rdquo;</p>
+          </blockquote>
+          <figcaption>
+            <span class="avatar">SK</span>
+            <span class="author">
+              <span class="author-name">Sarah Khalid</span>
+              <span class="author-title">Facility Manager, Pearl Towers</span>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <img src="assets/icons/icon-quote.svg" alt="" class="quote-icon" width="34" height="24">
+          <blockquote>
+            <p>&ldquo;We source all our heavy-duty rigging equipment and industrial tools from Sysidex. The quality is consistently top-tier, and their safety certifications provide total peace of mind.&rdquo;</p>
+          </blockquote>
+          <figcaption>
+            <span class="avatar">RJ</span>
+            <span class="author">
+              <span class="author-name">Rajesh Joseph</span>
+              <span class="author-title">Lead Engineer, Construction Co.</span>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" aria-labelledby="faq-heading">
+    <div class="faq-inner">
+      <div class="faq-head">
+        <h2 id="faq-heading">Frequently Asked Technical Questions (FTQ)</h2>
+        <p>Expert answers to common queries regarding our engineering supplies and smart solutions.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>
+            What certifications do your lifting and rigging equipments carry?
+            <img src="assets/icons/icon-faq-toggle.svg" alt="" width="19" height="20">
+          </summary>
+          <p data-placeholder="true">Contact our engineering team for the current certification and inspection documentation for this equipment category.</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            How customizable are the smart parcel lockers?
+            <img src="assets/icons/icon-faq-toggle.svg" alt="" width="19" height="20">
+          </summary>
+          <p data-placeholder="true">Contact our engineering team to discuss configuration options for compartment size, quantity, access method, and software integration.</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Do you provide 24/7 emergency elevator maintenance?
+            <img src="assets/icons/icon-faq-toggle.svg" alt="" width="19" height="20">
+          </summary>
+          <p data-placeholder="true">Contact our engineering team for details on AMC coverage and emergency call-out response for your site.</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Are your explosion-proof materials suitable for Zone 1 and Zone 2?
+            <img src="assets/icons/icon-faq-toggle.svg" alt="" width="19" height="20">
+          </summary>
+          <p data-placeholder="true">Contact our engineering team for the zone rating and datasheet of the specific explosion-proof product you need.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners" aria-label="Trusted partners and clients">
+    <p class="partners-label">Trusted Partners &amp; Clients</p>
+    <div class="marquee marquee-static">
+      <div class="marquee-track marquee-track-static">
+        <img src="assets/images/partner-osram.png" alt="OSRAM" width="194" height="78" loading="lazy">
+        <img src="assets/images/partner-tridonic.png" alt="Tridonic" width="194" height="78" loading="lazy">
+        <img src="assets/images/partner-abb.png" alt="ABB" width="194" height="78" loading="lazy">
+        <img src="assets/images/partner-philips.png" alt="Philips" width="194" height="78" loading="lazy">
+        <img src="assets/images/partner-schneider.png" alt="Schneider Electric" width="194" height="78" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="insights" aria-labelledby="insights-heading">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <h2 id="insights-heading">Industrial Insights</h2>
+          <p class="section-sub">Stay updated with the latest trends in smart infrastructure and industrial engineering.</p>
+        </div>
+        <a href="#" class="text-link">
+          View All Articles
+          <img src="assets/icons/icon-chevron-right.svg" alt="" width="9" height="9">
+        </a>
+      </div>
+
+      <div class="blog-grid">
+        <article class="blog-card">
+          <div class="blog-media">
+            <img src="assets/images/blog-lockers.png" alt="" width="512" height="279" loading="lazy">
+            <span class="blog-tag">Smart Solutions</span>
+          </div>
+          <h3>The Future of Automated Locker Systems in Qatar</h3>
+          <p>Exploring how modular smart locker technology is revolutionizing logistics and asset management in Doha&rsquo;s growing industrial hubs.</p>
+          <a href="#" class="blog-link">
+            Read More
+            <img src="assets/icons/icon-readmore-arrow.svg" alt="" width="9" height="9">
+          </a>
+        </article>
+
+        <article class="blog-card">
+          <div class="blog-media">
+            <img src="assets/images/blog-maintenance.png" alt="" width="512" height="279" loading="lazy">
+            <span class="blog-tag">Maintenance</span>
+          </div>
+          <h3>Predictive Maintenance for Vertical Transport</h3>
+          <p>How IoT-enabled sensors are reducing downtime and improving safety for elevators and escalators in high-traffic commercial buildings.</p>
+          <a href="#" class="blog-link">
+            Read More
+            <img src="assets/icons/icon-readmore-arrow.svg" alt="" width="9" height="9">
+          </a>
+        </article>
+
+        <article class="blog-card">
+          <div class="blog-media">
+            <img src="assets/images/blog-safety.png" alt="" width="512" height="279" loading="lazy">
+            <span class="blog-tag">Safety</span>
+          </div>
+          <h3>ATEX Standards in Oil &amp; Gas Facilities</h3>
+          <p>A comprehensive guide to understanding explosion-proof equipment requirements for Zone 1 and Zone 2 hazardous environments.</p>
+          <a href="#" class="blog-link">
+            Read More
+            <img src="assets/icons/icon-readmore-arrow.svg" alt="" width="9" height="9">
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner" id="contact" aria-labelledby="cta-heading">
+    <div class="section-inner cta-inner">
+      <div class="cta-copy">
+        <span class="pill">Solutions &amp; Services</span>
+        <h2 id="cta-heading">Let&rsquo;s build your next integrated solution</h2>
+        <p>From initial consultation through long-term maintenance — Sysidex is your trusted technology partner.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#quote" class="btn btn-cta-primary">
+          Request Quote
+          <img src="assets/icons/icon-quote-btn.svg" alt="" width="16" height="16">
+        </a>
+        <a href="#products" class="btn btn-cta-ghost">
+          View Products
+          <img src="assets/icons/icon-products-btn.svg" alt="" width="16" height="16">
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-col footer-brand">
+      <p class="footer-logo">SYSIDEX</p>
+      <p>Engineering innovation and smart solutions for industrial excellence in Qatar.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Sysidex on social media">
+          <img src="assets/icons/icon-social-1.svg" alt="" width="20" height="20">
+        </a>
+        <a href="#" aria-label="Sysidex on social media">
+          <img src="assets/icons/icon-social-2.svg" alt="" width="20" height="16">
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Product Catalog</a></li>
+        <li><a href="#">Smart Home Solutions</a></li>
+        <li><a href="#">Elevator Maintenance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Contact Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <address>
+        <p><img src="assets/icons/icon-footer-pin.svg" alt="" width="12" height="15"> C-Ring Road, Doha - Qatar</p>
+        <p><a href="tel:+97477090049"><img src="assets/icons/icon-footer-phone.svg" alt="" width="14" height="12"> +974 7709 0049</a></p>
+        <p><a href="mailto:sales@sysidex.com"><img src="assets/icons/icon-footer-mail.svg" alt="" width="15" height="12"> sales@sysidex.com</a></p>
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Sysidex Engineering &amp; Industrial Services. All rights reserved. Doha, Qatar.</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

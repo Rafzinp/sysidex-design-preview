@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blogs — Sysidex Insights</title>
+<meta name="description" content="Stay updated with the latest regulations, ATEX directives, and industrial IoT architecture in Doha with Sysidex technical blogs and industry news.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        blue: '#2b3990', indigo: '#10207a', orange: '#f37021', red: '#bb0017', teal: '#0d9488',
+        ink: '#1c1b1b', body: '#454652', faint: '#666b78',
+        bd: '#e0e0e0', bdlight: '#c6c5d3',
+        warm1: '#f6f3f2', warm2: '#fcf9f8', warm3: '#f7f8fa',
+        footerbg: '#1a1c23', footerbottom: '#14151a',
+        muted: '#bbc3ff',
+      },
+      fontFamily: {
+        sans: ['"Hanken Grotesk"','sans-serif'],
+        plex: ['"IBM Plex Sans"','sans-serif'],
+      },
+      borderRadius: { btn: '12px' },
+      boxShadow: {
+        sm2: '0 1px 2px rgba(16,32,122,0.06)',
+        card: '0 20px 40px -16px rgba(16,32,122,0.35)',
+      }
+    }
+  }
+}
+</script>
+<style>
+  body{font-family:'Hanken Grotesk',sans-serif;color:#1c1b1b;}
+  .plex{font-family:'IBM Plex Sans',sans-serif;}
+  .track::-webkit-scrollbar{display:none}
+  .track{scrollbar-width:none;-ms-overflow-style:none;}
+  details > summary{list-style:none}
+  details > summary::-webkit-details-marker{display:none}
+  details[open] .chev{transform:rotate(180deg)}
+</style>
+
+</head>
+<body class="bg-white text-ink antialiased">
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-blue focus:text-white focus:px-4 focus:py-2">Skip to content</a>
+
+<header class="border-b border-bd shadow-sm2">
+  <div class="bg-[#0a0f2e] text-[#9ca3af] text-xs plex">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-16 h-9 flex items-center justify-between border-b border-white/10">
+      <div class="hidden sm:flex items-center gap-6">
+        <a href="tel:+97460622239" class="flex items-center gap-2 hover:text-white transition-colors">
+          <img src="../assets/icons/icon-phone-small.svg" alt="" width="12" height="12" class="opacity-70"> Call us for free: +974 60622239
+        </a>
+        <a href="mailto:shop@sysidex.com" class="flex items-center gap-2 hover:text-white transition-colors">
+          <img src="../assets/icons/icon-mail-small.svg" alt="" width="13" height="11" class="opacity-70"> Email: shop@sysidex.com
+        </a>
+      </div>
+      <div class="flex items-center gap-4 ml-auto">
+        <a href="about.html" class="hover:text-white transition-colors">About Us</a>
+        <span class="text-white/20">|</span>
+        <a href="contact.html" class="hover:text-white transition-colors">Contact Us</a>
+        <a href="contact.html" class="bg-red text-white text-[11px] plex font-bold uppercase tracking-wide px-4 py-1.5 rounded-full hover:bg-[#970012] transition-colors">Request Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-[1440px] mx-auto px-6 md:px-16 h-[72px] flex items-center gap-6">
+    <a href="index.html" class="shrink-0">
+      <img src="../assets/images/logo-sysidex.png" alt="Sysidex" width="98" height="40">
+    </a>
+    <form action="products.html" class="flex-1 hidden md:flex items-stretch h-12 max-w-2xl bg-[#f3f4f6] border border-[#e5e7eb] rounded-lg overflow-hidden" onsubmit="return true;">
+      <input type="search" name="q" placeholder="Search for products, codes, or specs..." class="flex-1 pl-5 pr-4 text-[15px] bg-transparent outline-none placeholder:text-[#9ca3af]">
+      <button type="submit" aria-label="Search" class="px-[22px] flex items-center justify-center bg-blue hover:bg-[#222f78] transition-colors">
+        <img src="../assets/icons/icon-search.svg" alt="" width="18" height="18">
+      </button>
+    </form>
+    <div class="flex items-center gap-6 ml-auto shrink-0">
+      <a href="#cart" class="flex items-center gap-2.5 plex text-sm">
+        <img src="../assets/icons/icon-cart.svg" alt="" width="20" height="18">
+        <span class="hidden sm:inline font-bold text-blue">0 Items</span>
+      </a>
+      <a href="#login" class="hidden lg:inline border-l border-bd pl-6 font-bold text-sm text-blue hover:underline">Login / Register</a>
+    </div>
+  </div>
+
+  <nav class="bg-white border-t border-bd" aria-label="Primary">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-16 flex items-center justify-between overflow-x-auto">
+      <div class="flex items-center">
+        <a href="products.html" class="flex flex-col items-start px-5 pt-3.5 pb-[11px] text-[13px] plex font-bold uppercase tracking-wide whitespace-nowrap transition-colors text-blue border-b-[3px] border-blue">All Categories</a>
+        <a href="category-industrial.html" class="flex flex-col items-start px-5 py-3.5 text-[13px] plex font-bold uppercase tracking-wide text-[#374151] hover:text-blue transition-colors whitespace-nowrap">Industrial &amp; Retail Solutions</a>
+<a href="category-iot.html" class="flex flex-col items-start px-5 py-3.5 text-[13px] plex font-bold uppercase tracking-wide text-[#374151] hover:text-blue transition-colors whitespace-nowrap">IoT &amp; Smart Solutions</a>
+<a href="category-engineering.html" class="flex flex-col items-start px-5 py-3.5 text-[13px] plex font-bold uppercase tracking-wide text-[#374151] hover:text-blue transition-colors whitespace-nowrap">Engineering Services</a>
+      </div>
+      <span class="hidden xl:flex items-center gap-1.5 px-4 py-3.5 text-[13px] text-[#6b7280] whitespace-nowrap">
+        <img src="../assets/icons/icon-location-pin.svg" alt="" width="12" height="15"> Doha, Qatar
+      </span>
+    </div>
+  </nav>
+</header>
+
+<div class="border-b border-bd bg-warm3">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-16 h-14 flex items-center gap-2 text-sm plex text-faint">
+    <a href="index.html" class="hover:text-red">Home</a><span class="text-bdlight">/</span><span class="text-ink font-medium">Blogs</span>
+  </div>
+</div>
+
+<main id="main">
+  <section class="bg-blue">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-16 py-16">
+      <p class="flex items-center gap-2 text-xs plex uppercase tracking-[0.14em] text-orange mb-6">
+        <span class="w-2 h-2 rounded-full bg-orange"></span> Sysidex Insights
+      </p>
+      <h1 class="text-white font-bold text-[40px] md:text-[52px] leading-[1.05] tracking-tight max-w-2xl">Technical Blogs &amp; Industry News</h1>
+      <p class="text-muted mt-6 max-w-xl text-lg">Stay updated with the latest regulations, ATEX directives, and industrial IoT architecture in Doha.</p>
+    </div>
+  </section>
+
+  <section class="max-w-[1440px] mx-auto px-6 md:px-16 py-16">
+    <p class="text-xs plex uppercase tracking-wide text-red font-semibold mb-4">Featured Article</p>
+    <article class="border border-bd grid md:grid-cols-2">
+      <a href="blog-post.html" class="block relative h-72 md:h-full overflow-hidden">
+        <img src="../assets/images/blog-lockers.png" alt="" class="w-full h-full object-cover">
+        <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-btn">Smart Solutions</span>
+      </a>
+      <div class="p-8 md:p-10 flex flex-col justify-center">
+        <h2 class="text-2xl md:text-[28px] font-bold leading-snug"><a href="blog-post.html" class="hover:text-red">The Future of Automated Locker Systems in Qatar</a></h2>
+        <p class="text-body text-sm mt-4">Exploring how modular smart locker technology is revolutionizing logistics, supply tracking, and asset management in Doha&rsquo;s growing industrial hubs.</p>
+        <p class="text-xs plex text-faint mt-6">By Ing. Faisal Al-Mansoor &middot; Oct 24, 2024</p>
+        <a href="blog-post.html" class="inline-flex items-center justify-center w-fit h-11 px-6 bg-red text-white text-sm plex font-bold uppercase tracking-wide hover:bg-[#970012] transition-colors mt-6">Read Entire Article</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="max-w-[1440px] mx-auto px-6 md:px-16 pb-20 grid lg:grid-cols-[1fr_320px] gap-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+      
+      <article>
+        <a href="blog-post.html" class="block relative rounded-lg overflow-hidden mb-4">
+          <img src="../assets/images/blog-maintenance.png" alt="" class="w-full h-56 object-cover hover:scale-105 transition-transform">
+          <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-btn">Smart Solutions</span>
+        </a>
+        <h3 class="font-bold text-lg leading-snug"><a href="blog-post.html" class="hover:text-red">Predictive Maintenance for Vertical Transport</a></h3>
+        <p class="text-body text-sm mt-2">How IoT-enabled sensors are reducing downtime and improving safety for elevators in commercial properties.</p>
+        <a href="blog-post.html" class="inline-flex items-center gap-2 text-xs plex uppercase tracking-wide text-indigo font-semibold mt-4 hover:text-red">Read Article <img src="../assets/icons/icon-readmore-arrow.svg" alt="" width="9" height="9"></a>
+      </article>
+
+      <article>
+        <a href="blog-post.html" class="block relative rounded-lg overflow-hidden mb-4">
+          <img src="../assets/images/blog-safety.png" alt="" class="w-full h-56 object-cover hover:scale-105 transition-transform">
+          <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-btn">Industrial Safety</span>
+        </a>
+        <h3 class="font-bold text-lg leading-snug"><a href="blog-post.html" class="hover:text-red">ATEX Standards in Oil &amp; Gas Facilities</a></h3>
+        <p class="text-body text-sm mt-2">A comprehensive guide to understanding explosion-proof requirements for Zone 1 and Zone 2 hazardous areas.</p>
+        <a href="blog-post.html" class="inline-flex items-center gap-2 text-xs plex uppercase tracking-wide text-indigo font-semibold mt-4 hover:text-red">Read Article <img src="../assets/icons/icon-readmore-arrow.svg" alt="" width="9" height="9"></a>
+      </article>
+
+      <article>
+        <a href="blog-post.html" class="block relative rounded-lg overflow-hidden mb-4">
+          <img src="../assets/images/blog-maintenance.png" alt="" class="w-full h-56 object-cover hover:scale-105 transition-transform">
+          <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-btn">Engineering Services</span>
+        </a>
+        <h3 class="font-bold text-lg leading-snug"><a href="blog-post.html" class="hover:text-red">Smart Grid Integration in Qatar Utilities</a></h3>
+        <p class="text-body text-sm mt-2">Analyzing the transition to smart grids using robust Modbus telemetry systems in Doha.</p>
+        <a href="blog-post.html" class="inline-flex items-center gap-2 text-xs plex uppercase tracking-wide text-indigo font-semibold mt-4 hover:text-red">Read Article <img src="../assets/icons/icon-readmore-arrow.svg" alt="" width="9" height="9"></a>
+      </article>
+
+      <article>
+        <a href="blog-post.html" class="block relative rounded-lg overflow-hidden mb-4">
+          <img src="../assets/images/blog-safety.png" alt="" class="w-full h-56 object-cover hover:scale-105 transition-transform">
+          <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-btn">Industrial Safety</span>
+        </a>
+        <h3 class="font-bold text-lg leading-snug"><a href="blog-post.html" class="hover:text-red">Understanding BASEEFA Certifications</a></h3>
+        <p class="text-body text-sm mt-2">Why intrinsically safe tools are mandatory for bulk storage cargo inspection.</p>
+        <a href="blog-post.html" class="inline-flex items-center gap-2 text-xs plex uppercase tracking-wide text-indigo font-semibold mt-4 hover:text-red">Read Article <img src="../assets/icons/icon-readmore-arrow.svg" alt="" width="9" height="9"></a>
+      </article>
+
+      <article>
+        <a href="blog-post.html" class="block relative rounded-lg overflow-hidden mb-4">
+          <img src="../assets/images/blog-maintenance.png" alt="" class="w-full h-56 object-cover hover:scale-105 transition-transform">
+          <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-btn">Smart Solutions</span>
+        </a>
+        <h3 class="font-bold text-lg leading-snug"><a href="blog-post.html" class="hover:text-red">Digital Automation in Modern Logistics</a></h3>
+        <p class="text-body text-sm mt-2">Integrating smart asset vaults with automated CRM software solutions.</p>
+        <a href="blog-post.html" class="inline-flex items-center gap-2 text-xs plex uppercase tracking-wide text-indigo font-semibold mt-4 hover:text-red">Read Article <img src="../assets/icons/icon-readmore-arrow.svg" alt="" width="9" height="9"></a>
+      </article>
+
+      <article>
+        <a href="blog-post.html" class="block relative rounded-lg overflow-hidden mb-4">
+          <img src="../assets/images/blog-safety.png" alt="" class="w-full h-56 object-cover hover:scale-105 transition-transform">
+          <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-btn">Industrial Safety</span>
+        </a>
+        <h3 class="font-bold text-lg leading-snug"><a href="blog-post.html" class="hover:text-red">Explosion Proof Electrical Operations</a></h3>
+        <p class="text-body text-sm mt-2">Ensuring zero gas exposure during high-torque drilling setups.</p>
+        <a href="blog-post.html" class="inline-flex items-center gap-2 text-xs plex uppercase tracking-wide text-indigo font-semibold mt-4 hover:text-red">Read Article <img src="../assets/icons/icon-readmore-arrow.svg" alt="" width="9" height="9"></a>
+      </article>
+    </div>
+    <aside class="space-y-8">
+      <div class="border border-bd">
+        <h3 class="text-xs plex uppercase tracking-wide text-faint px-4 pt-4 pb-2">Categories</h3>
+        <ul class="pb-2">
+          <li><a href="blog.html" class="flex items-center justify-between px-4 py-3 rounded-btn hover:bg-warm3 text-sm font-semibold text-blue bg-warm3">All Articles <span class="text-xs text-faint plex">24</span></a></li>
+<li><a href="blog.html" class="flex items-center justify-between px-4 py-3 rounded-btn hover:bg-warm3 text-sm text-ink">Industry Trends <span class="text-xs text-faint plex">2</span></a></li>
+<li><a href="blog.html" class="flex items-center justify-between px-4 py-3 rounded-btn hover:bg-warm3 text-sm text-ink">Product Guides <span class="text-xs text-faint plex">5</span></a></li>
+<li><a href="blog.html" class="flex items-center justify-between px-4 py-3 rounded-btn hover:bg-warm3 text-sm text-ink">Smart Solutions <span class="text-xs text-faint plex">8</span></a></li>
+<li><a href="blog.html" class="flex items-center justify-between px-4 py-3 rounded-btn hover:bg-warm3 text-sm text-ink">Industrial Safety <span class="text-xs text-faint plex">6</span></a></li>
+<li><a href="blog.html" class="flex items-center justify-between px-4 py-3 rounded-btn hover:bg-warm3 text-sm text-ink">Engineering Services <span class="text-xs text-faint plex">3</span></a></li>
+        </ul>
+      </div>
+    </aside>
+  </section>
+</main>
+
+<footer class="bg-[#1d1c1a] text-[#f7f5ee]">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-16 py-10">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8">
+      <a href="index.html" class="shrink-0">
+        <img src="../assets/images/logo-sysidex-white.svg" alt="Sysidex" width="180" height="27">
+      </a>
+      <div class="flex flex-wrap gap-12">
+        <div class="text-right">
+          <p class="text-[11px] plex uppercase tracking-wide text-[#c3bfaf] mb-3">Contact</p>
+          <p class="text-sm"><a href="tel:+97477090049" class="hover:text-red">+974 7709 0049</a></p>
+          <p class="text-sm mt-1"><a href="mailto:sales@sysidex.com" class="hover:text-red">sales@sysidex.com</a></p>
+        </div>
+        <div class="text-right">
+          <p class="text-[11px] plex uppercase tracking-wide text-[#c3bfaf] mb-3">Address</p>
+          <p class="text-sm">C-Ring Road, Doha - Qatar</p>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10"></div>
+    <div class="flex flex-col lg:flex-row items-start justify-between gap-10 py-10">
+      <p class="text-[11px] plex uppercase tracking-wide text-[#c3bfaf] max-w-xs leading-relaxed">Engineering innovation and smart solutions for industrial excellence in Qatar.</p>
+      <ul class="grid grid-cols-3 gap-x-8 gap-y-3 lg:justify-items-end">
+        <li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">ABOUT US</a></li>
+<li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">SERVICES</a></li>
+<li><a href="testimonials.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">TESTIMONIALS</a></li>
+<li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="blog.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CASE STUDIES</a></li>
+<li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PRODUCTS</a></li>
+<li><a href="careers.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CAREERS</a></li>
+<li><a href="contact.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CONTACT</a></li>
+<li><a href="blog.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">BLOGS</a></li>
+      </ul>
+      <div class="w-full lg:w-[360px] shrink-0">
+        <p class="text-[11px] plex uppercase tracking-wide text-[#c3bfaf] mb-4">Business Hours</p>
+        <div class="text-[13px] space-y-0 mb-6">
+          <div class="flex items-center justify-between py-2 border-b border-white/10"><span class="font-medium">Sunday - Thursday</span><span class="text-[#c3bfaf]">09:30 - 21:00</span></div>
+          <div class="flex items-center justify-between py-2 border-b border-white/10"><span class="font-medium">Saturday</span><span class="text-[#c3bfaf]">09:00 - 16:30</span></div>
+          <div class="flex items-center justify-between py-2 border-b border-white/10"><span class="font-medium">Friday</span><span class="text-[#c3bfaf]">Closed</span></div>
+        </div>
+        <div class="flex items-center justify-between">
+          <p class="text-[11px] plex uppercase tracking-wide text-[#c3bfaf]">Social</p>
+          <div class="flex gap-4">
+            <a href="#" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">Instagram</a>
+            <a href="#" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">LinkedIn</a>
+            <a href="#" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10"></div>
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-6 text-sm">
+      <a href="#" class="hover:text-red">Privacy Policy</a>
+      <p class="text-[#c3bfaf] uppercase text-xs tracking-wide">&copy; 2024 Sysidex. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
