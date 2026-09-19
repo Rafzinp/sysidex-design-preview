@@ -26,7 +26,7 @@ tailwind.config = {
         sans: ['"Hanken Grotesk"','sans-serif'],
         plex: ['"IBM Plex Sans"','sans-serif'],
       },
-      borderRadius: { btn: '12px' },
+      borderRadius: { btn: '12px', card: '12px' },
       boxShadow: {
         sm2: '0 1px 2px rgba(16,32,122,0.06)',
         card: '0 20px 40px -16px rgba(16,32,122,0.35)',
@@ -45,6 +45,7 @@ tailwind.config = {
   details[open] .chev{transform:rotate(180deg)}
 </style>
 
+<link rel="stylesheet" href="../assets/css/proto.css">
 </head>
 <body class="bg-white text-ink antialiased">
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-blue focus:text-white focus:px-4 focus:py-2">Skip to content</a>
@@ -144,113 +145,30 @@ tailwind.config = {
       <div class="flex items-end justify-between border-b border-bd pb-6 mb-10">
         <div>
           <h2 class="text-[32px] font-bold text-blue leading-tight">Latest Products</h2>
-          <p class="text-body mt-1">New additions to our industrial catalog.</p>
+          <p class="text-body mt-1">New additions across our industrial, IoT and engineering ranges.</p>
         </div>
         <a href="products.html" class="hidden sm:flex items-center gap-1 text-xs plex uppercase tracking-wide text-indigo hover:text-red">
           View All Products <img src="../assets/icons/icon-chevron-right.svg" alt="" width="9" height="9">
         </a>
       </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-impact-wrench.jpg" alt="Cordless Impact Wrench 20V Brushless Motor" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 ease-out">
-          <span class="absolute top-3 left-3 bg-red text-white text-[10px] plex uppercase tracking-wide px-2 py-1 rounded">New</span>
-          <button type="button" aria-label="Add Cordless Impact Wrench 20V Brushless Motor to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-ink/30">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Power Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Cordless Impact Wrench 20V Brushless Motor</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Cordless Impact Wrench 20V Brushless Motor to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-angle-grinder.jpg" alt="Angle Grinder 125mm 1200W Heavy Duty" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 ease-out">
-          
-          <button type="button" aria-label="Add Angle Grinder 125mm 1200W Heavy Duty to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-ink/30">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Cutting Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Angle Grinder 125mm 1200W Heavy Duty</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Angle Grinder 125mm 1200W Heavy Duty to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-circular-saw.jpg" alt="Circular Saw 185mm 1400W Professional" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 ease-out">
-          <span class="absolute top-3 left-3 bg-red text-white text-[10px] plex uppercase tracking-wide px-2 py-1 rounded">New</span>
-          <button type="button" aria-label="Add Circular Saw 185mm 1400W Professional to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-ink/30">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Cutting Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Circular Saw 185mm 1400W Professional</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Circular Saw 185mm 1400W Professional to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-jigsaw.jpg" alt="Electric Jigsaw 800W Variable Speed Control" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 ease-out">
-          
-          <button type="button" aria-label="Add Electric Jigsaw 800W Variable Speed Control to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-ink/30">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Precision Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Electric Jigsaw 800W Variable Speed Control</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Electric Jigsaw 800W Variable Speed Control to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-    </div>
+    <div data-latest class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
   </section>
 
-  <section class="border-y border-bd bg-warm2 py-12">
-    <p class="text-center text-xs plex uppercase tracking-[0.14em] text-faint mb-8">Trusted Clients</p>
-    <div class="max-w-[1440px] mx-auto px-6 md:px-16 flex items-center gap-6">
-      <button class="w-10 h-10 rounded-full border border-bd flex items-center justify-center shrink-0 hover:bg-warm3" aria-label="Previous"><img src="../assets/icons/icon-chevron-left-nav.svg" alt="" width="16" height="16"></button>
-      <div class="flex-1 flex items-center justify-between gap-8 overflow-x-auto track grayscale opacity-70">
-        <img src="../assets/images/partner-saraya.png" alt="Saraya Corniche Hotel" class="h-16 shrink-0">
-        <img src="../assets/images/partner-qatargas.png" alt="Qatargas" class="h-14 shrink-0">
-        <img src="../assets/images/partner-qatarenergy.png" alt="QatarEnergy" class="h-14 shrink-0">
-        <img src="../assets/images/partner-moehe.png" alt="Ministry of Education and Higher Education, State of Qatar" class="h-14 shrink-0">
-        <img src="../assets/images/partner-qapco.png" alt="QAPCO — Qatar Petrochemical Company" class="h-14 shrink-0">
-        <img src="../assets/images/partner-ummalhoul.png" alt="Umm Al Houl Power" class="h-16 shrink-0">
+  <section class="border-y border-bd bg-warm2 py-16" aria-labelledby="trust-clients">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-16">
+      <div class="flex flex-wrap items-end justify-between gap-4 border-b border-bd pb-6 mb-10">
+        <div>
+          <p class="text-xs plex uppercase tracking-[0.14em] text-faint">Our Clients</p>
+          <h2 id="trust-clients" class="text-[32px] font-bold text-blue leading-tight mt-1">Trusted Clients</h2>
+          <p class="text-body mt-1">Organisations across Qatar that rely on Sysidex.</p>
+        </div>
+        <div class="flex items-center gap-6">
+          <button type="button" data-marquee-pause aria-pressed="false" class="text-xs plex text-faint hover:text-blue underline underline-offset-4">Pause animation</button>
+          <a href="clients.html" class="flex items-center gap-1 text-xs plex uppercase tracking-wide text-indigo hover:text-red">View all clients <img src="../assets/icons/icon-chevron-right.svg" alt="" width="9" height="9"></a>
+        </div>
       </div>
-      <button class="w-10 h-10 rounded-full border border-bd flex items-center justify-center shrink-0 hover:bg-warm3" aria-label="Next"><img src="../assets/icons/icon-chevron-right-nav.svg" alt="" width="16" height="16"></button>
-    </div>
-    <div class="flex justify-center gap-2 mt-6">
-      <span class="w-6 h-1.5 rounded-full bg-indigo"></span>
-      <span class="w-1.5 h-1.5 rounded-full bg-bdlight"></span>
-      <span class="w-1.5 h-1.5 rounded-full bg-bdlight"></span>
-      <span class="w-1.5 h-1.5 rounded-full bg-bdlight"></span>
+      <div data-logos="clients" data-limit="8" role="region" aria-label="Trusted Clients logos"></div>
     </div>
   </section>
 
@@ -266,7 +184,7 @@ tailwind.config = {
         </a>
       </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 border border-bd divide-y md:divide-y-0 md:divide-x divide-bd">
+    <div class="grid grid-cols-1 md:grid-cols-3 border border-bd divide-y md:divide-y-0 md:divide-x divide-bd rounded-card overflow-hidden">
       <article class="p-8 hover:bg-warm3 transition-colors">
         <div class="flex items-center justify-between mb-6">
           <img src="../assets/icons/icon-div-tools.svg" alt="" width="28" height="27">
@@ -325,33 +243,33 @@ tailwind.config = {
       </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <figure class="rounded-2xl border border-bd shadow-sm2 p-10">
+      <figure class="border border-bd shadow-sm2 p-10 rounded-card">
         <img src="../assets/icons/icon-quote.svg" alt="" width="34" height="24" class="opacity-70">
         <blockquote class="text-ink text-[15px] leading-relaxed mt-6">&ldquo;Sysidex provided exceptional automated locker solutions for our new facility. The precision of their installation and the robust software integration exceeded our expectations.&rdquo;</blockquote>
         <figcaption class="flex items-center gap-3 mt-8">
-          <span class="w-12 h-12 rounded-btn bg-warm1 text-blue font-bold flex items-center justify-center">AA</span>
+          <span class="w-12 h-12 bg-warm1 text-blue font-bold flex items-center justify-center rounded-lg">AA</span>
           <span>
             <span class="block font-semibold text-sm">Ahmed Al-Sulaiti</span>
             <span class="block text-xs text-faint">Operations Director, Logistics Hub</span>
           </span>
         </figcaption>
       </figure>
-      <figure class="rounded-2xl border border-bd shadow-sm2 p-10">
+      <figure class="border border-bd shadow-sm2 p-10 rounded-card">
         <img src="../assets/icons/icon-quote.svg" alt="" width="34" height="24" class="opacity-70">
         <blockquote class="text-ink text-[15px] leading-relaxed mt-6">&ldquo;Their elevator maintenance team is incredibly responsive and technically proficient. We have seen a significant reduction in downtime across our commercial properties.&rdquo;</blockquote>
         <figcaption class="flex items-center gap-3 mt-8">
-          <span class="w-12 h-12 rounded-btn bg-warm1 text-blue font-bold flex items-center justify-center">SK</span>
+          <span class="w-12 h-12 bg-warm1 text-blue font-bold flex items-center justify-center rounded-lg">SK</span>
           <span>
             <span class="block font-semibold text-sm">Sarah Khalid</span>
             <span class="block text-xs text-faint">Facility Manager, Pearl Towers</span>
           </span>
         </figcaption>
       </figure>
-      <figure class="rounded-2xl border border-bd shadow-sm2 p-10">
+      <figure class="border border-bd shadow-sm2 p-10 rounded-card">
         <img src="../assets/icons/icon-quote.svg" alt="" width="34" height="24" class="opacity-70">
         <blockquote class="text-ink text-[15px] leading-relaxed mt-6">&ldquo;We source all our heavy-duty rigging equipment and industrial tools from Sysidex. The quality is consistently top-tier, and their safety certifications provide total peace of mind.&rdquo;</blockquote>
         <figcaption class="flex items-center gap-3 mt-8">
-          <span class="w-12 h-12 rounded-btn bg-warm1 text-blue font-bold flex items-center justify-center">RJ</span>
+          <span class="w-12 h-12 bg-warm1 text-blue font-bold flex items-center justify-center rounded-lg">RJ</span>
           <span>
             <span class="block font-semibold text-sm">Rajesh Joseph</span>
             <span class="block text-xs text-faint">Lead Engineer, Construction Co.</span>
@@ -361,14 +279,20 @@ tailwind.config = {
     </div>
   </section>
 
-  <section class="border-y border-bd bg-warm2 py-12">
-    <p class="text-center text-xs plex uppercase tracking-[0.14em] text-faint mb-8">Trusted Partners &amp; Clients</p>
-    <div class="max-w-[1200px] mx-auto px-6 flex items-center justify-between gap-10 grayscale opacity-70 overflow-x-auto track">
-      <img src="../assets/images/partner-osram.png" alt="OSRAM" class="h-16 shrink-0">
-      <img src="../assets/images/partner-tridonic.png" alt="Tridonic" class="h-16 shrink-0">
-      <img src="../assets/images/partner-abb.png" alt="ABB" class="h-16 shrink-0">
-      <img src="../assets/images/partner-philips.png" alt="Philips" class="h-16 shrink-0">
-      <img src="../assets/images/partner-schneider.png" alt="Schneider Electric" class="h-16 shrink-0">
+  <section class="border-y border-bd bg-warm2 py-16" aria-labelledby="trust-partners">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-16">
+      <div class="flex flex-wrap items-end justify-between gap-4 border-b border-bd pb-6 mb-10">
+        <div>
+          <p class="text-xs plex uppercase tracking-[0.14em] text-faint">Our Partners</p>
+          <h2 id="trust-partners" class="text-[32px] font-bold text-blue leading-tight mt-1">Trusted Partners</h2>
+          <p class="text-body mt-1">Leading manufacturers and technology brands we work with.</p>
+        </div>
+        <div class="flex items-center gap-6">
+          <button type="button" data-marquee-pause aria-pressed="false" class="text-xs plex text-faint hover:text-blue underline underline-offset-4">Pause animation</button>
+          <a href="partners.html" class="flex items-center gap-1 text-xs plex uppercase tracking-wide text-indigo hover:text-red">View all partners <img src="../assets/icons/icon-chevron-right.svg" alt="" width="9" height="9"></a>
+        </div>
+      </div>
+      <div data-logos="partners" data-limit="8" role="region" aria-label="Trusted Partners logos"></div>
     </div>
   </section>
 
@@ -386,27 +310,27 @@ tailwind.config = {
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <article>
-        <a href="blog-post.html" class="block relative rounded-lg overflow-hidden mb-4">
+        <a href="blog-post.html" class="block relative overflow-hidden mb-4 rounded-card">
           <img src="../assets/images/blog-lockers.png" alt="" class="w-full h-56 object-cover hover:scale-[1.02] transition-transform duration-500 ease-out">
-          <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-btn">Smart Solutions</span>
+          <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-md">Smart Solutions</span>
         </a>
         <h3 class="font-bold text-lg leading-snug"><a href="blog-post.html" class="hover:text-red">The Future of Automated Locker Systems in Qatar</a></h3>
         <p class="text-body text-sm mt-2">Exploring how modular smart locker technology is revolutionizing logistics and asset management in Doha&rsquo;s growing industrial hubs.</p>
         <a href="blog-post.html" class="inline-flex items-center gap-2 text-xs plex uppercase tracking-wide text-indigo font-semibold mt-4 hover:text-red">Read More <img src="../assets/icons/icon-readmore-arrow.svg" alt="" width="9" height="9"></a>
       </article>
       <article>
-        <a href="blog-post.html" class="block relative rounded-lg overflow-hidden mb-4">
+        <a href="blog-post.html" class="block relative overflow-hidden mb-4 rounded-card">
           <img src="../assets/images/blog-maintenance.png" alt="" class="w-full h-56 object-cover hover:scale-[1.02] transition-transform duration-500 ease-out">
-          <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-btn">Maintenance</span>
+          <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-md">Maintenance</span>
         </a>
         <h3 class="font-bold text-lg leading-snug"><a href="blog-post.html" class="hover:text-red">Predictive Maintenance for Vertical Transport</a></h3>
         <p class="text-body text-sm mt-2">How IoT-enabled sensors are reducing downtime and improving safety for elevators and escalators in high-traffic commercial buildings.</p>
         <a href="blog-post.html" class="inline-flex items-center gap-2 text-xs plex uppercase tracking-wide text-indigo font-semibold mt-4 hover:text-red">Read More <img src="../assets/icons/icon-readmore-arrow.svg" alt="" width="9" height="9"></a>
       </article>
       <article>
-        <a href="blog-post.html" class="block relative rounded-lg overflow-hidden mb-4">
+        <a href="blog-post.html" class="block relative overflow-hidden mb-4 rounded-card">
           <img src="../assets/images/blog-safety.png" alt="" class="w-full h-56 object-cover hover:scale-[1.02] transition-transform duration-500 ease-out">
-          <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-btn">Safety</span>
+          <span class="absolute top-4 left-4 bg-teal text-white text-[10px] plex uppercase tracking-wide px-3 py-1 rounded-md">Safety</span>
         </a>
         <h3 class="font-bold text-lg leading-snug"><a href="blog-post.html" class="hover:text-red">ATEX Standards in Oil &amp; Gas Facilities</a></h3>
         <p class="text-body text-sm mt-2">A comprehensive guide to understanding explosion-proof equipment requirements for Zone 1 and Zone 2 hazardous environments.</p>
@@ -418,7 +342,7 @@ tailwind.config = {
   <section class="bg-blue">
     <div class="max-w-[1440px] mx-auto px-6 md:px-16 py-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
       <div class="max-w-2xl">
-        <span class="inline-block text-xs plex uppercase tracking-wide text-white border border-white/30 rounded-btn px-4 py-2">Solutions &amp; Services</span>
+        <span class="inline-block text-xs plex uppercase tracking-wide text-white border border-white/30 px-4 py-2 rounded-full">Solutions &amp; Services</span>
         <h2 class="text-white text-3xl font-bold mt-6">Let&rsquo;s build your next integrated solution</h2>
         <p class="text-muted mt-3">From initial consultation through long-term maintenance — Sysidex is your trusted technology partner.</p>
       </div>
@@ -435,28 +359,28 @@ tailwind.config = {
       <p class="text-body mt-2">Expert answers to common queries regarding our engineering supplies and smart solutions.</p>
     </div>
     <div class="space-y-3">
-      <details class="border border-bd rounded-lg open:bg-warm3">
+      <details class="border border-bd open:bg-warm3 rounded-card">
         <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer font-semibold text-sm">
           What certifications do your lifting and rigging equipments carry?
           <img src="../assets/icons/icon-faq-toggle.svg" alt="" width="19" height="20" class="chev transition-transform shrink-0">
         </summary>
         <p class="px-5 pb-4 text-sm text-body">Contact our engineering team for the current certification and inspection documentation for this equipment category.</p>
       </details>
-      <details class="border border-bd rounded-lg open:bg-warm3">
+      <details class="border border-bd open:bg-warm3 rounded-card">
         <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer font-semibold text-sm">
           How customizable are the smart parcel lockers?
           <img src="../assets/icons/icon-faq-toggle.svg" alt="" width="19" height="20" class="chev transition-transform shrink-0">
         </summary>
         <p class="px-5 pb-4 text-sm text-body">Contact our engineering team to discuss configuration options for compartment size, quantity, access method, and software integration.</p>
       </details>
-      <details class="border border-bd rounded-lg open:bg-warm3">
+      <details class="border border-bd open:bg-warm3 rounded-card">
         <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer font-semibold text-sm">
           Do you provide 24/7 emergency elevator maintenance?
           <img src="../assets/icons/icon-faq-toggle.svg" alt="" width="19" height="20" class="chev transition-transform shrink-0">
         </summary>
         <p class="px-5 pb-4 text-sm text-body">Contact our engineering team for details on AMC coverage and emergency call-out response for your site.</p>
       </details>
-      <details class="border border-bd rounded-lg open:bg-warm3">
+      <details class="border border-bd open:bg-warm3 rounded-card">
         <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer font-semibold text-sm">
           Are your explosion-proof materials suitable for Zone 1 and Zone 2?
           <img src="../assets/icons/icon-faq-toggle.svg" alt="" width="19" height="20" class="chev transition-transform shrink-0">
@@ -492,7 +416,8 @@ tailwind.config = {
         <li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">ABOUT US</a></li>
 <li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">SERVICES</a></li>
 <li><a href="testimonials.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">TESTIMONIALS</a></li>
-<li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="clients.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="partners.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PARTNERS</a></li>
 <li><a href="blog.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CASE STUDIES</a></li>
 <li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PRODUCTS</a></li>
 <li><a href="careers.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CAREERS</a></li>
@@ -523,5 +448,7 @@ tailwind.config = {
     </div>
   </div>
 </footer>
+<script src="../assets/js/catalog.js"></script>
+<script src="../assets/js/ui.js"></script>
 </body>
 </html>

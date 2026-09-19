@@ -26,7 +26,7 @@ tailwind.config = {
         sans: ['"Hanken Grotesk"','sans-serif'],
         plex: ['"IBM Plex Sans"','sans-serif'],
       },
-      borderRadius: { btn: '12px' },
+      borderRadius: { btn: '12px', card: '12px' },
       boxShadow: {
         sm2: '0 1px 2px rgba(16,32,122,0.06)',
         card: '0 20px 40px -16px rgba(16,32,122,0.35)',
@@ -45,6 +45,7 @@ tailwind.config = {
   details[open] .chev{transform:rotate(180deg)}
 </style>
 
+<link rel="stylesheet" href="../assets/css/proto.css">
 </head>
 <body class="bg-white text-ink antialiased">
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-blue focus:text-white focus:px-4 focus:py-2">Skip to content</a>
@@ -115,7 +116,7 @@ tailwind.config = {
       <h1 class="text-[32px] md:text-[44px] font-bold text-ink leading-[1.1]">The Future of Automated Lumber Systems in Qatar</h1>
       <p class="text-body text-lg mt-6 leading-relaxed">As Qatar accelerates its smart manufacturing goals under the National Vision 2030, traditional timber and heavy industries are undergoing a massive digital overhaul. The introduction of modular automated lumber systems is completely reshaping material handling, log tracking, and safety protocols across construction and manufacturing hubs.</p>
     </div>
-    <img src="../assets/images/blog-lockers.png" alt="" class="w-full h-96 object-cover rounded-lg mt-10">
+    <img src="../assets/images/blog-lockers.png" alt="" class="w-full h-96 object-cover mt-10 rounded-card">
 
     <div class="grid lg:grid-cols-[1fr_320px] gap-12 mt-14">
       <div class="space-y-6">
@@ -125,7 +126,7 @@ tailwind.config = {
         </div>
 
         <figure class="pt-2">
-          <div class="bg-warm1 h-56 rounded-lg"></div>
+          <div class="bg-warm1 h-56 rounded-card"></div>
           <figcaption class="text-xs plex text-faint mt-2">Figure 1: IoT sensors integrated into high-precision lumber cutting machinery for real-time telemetry.</figcaption>
         </figure>
 
@@ -151,10 +152,10 @@ tailwind.config = {
         <p class="text-body leading-relaxed">Ultimately, implementing automated operations is no longer optional for heavy timber operations looking to scale in the GCC region. Accurate telemetry, rigid engineering components, and smart asset automation remain the defining pillars of tomorrow&rsquo;s industrial champions.</p>
 
         <div class="flex items-center flex-wrap gap-2 pt-4">
-          <span class="border border-bd rounded-btn px-3 py-1 text-xs plex text-faint">Automation</span>
-          <span class="border border-bd rounded-btn px-3 py-1 text-xs plex text-faint">IoT</span>
-          <span class="border border-bd rounded-btn px-3 py-1 text-xs plex text-faint">Manufacturing</span>
-          <span class="border border-bd rounded-btn px-3 py-1 text-xs plex text-faint">Qatar</span>
+          <span class="border border-bd px-3 py-1 text-xs plex text-faint rounded-full">Automation</span>
+          <span class="border border-bd px-3 py-1 text-xs plex text-faint rounded-full">IoT</span>
+          <span class="border border-bd px-3 py-1 text-xs plex text-faint rounded-full">Manufacturing</span>
+          <span class="border border-bd px-3 py-1 text-xs plex text-faint rounded-full">Qatar</span>
         </div>
 
         <div class="flex items-center gap-3 pt-2">
@@ -165,8 +166,8 @@ tailwind.config = {
           <a href="#" aria-label="Copy link" class="w-9 h-9 rounded-full bg-warm1 flex items-center justify-center text-xs font-bold text-blue hover:bg-warm3">&#128279;</a>
         </div>
 
-        <div class="border border-bd p-6 flex items-start gap-4 mt-4">
-          <span class="w-12 h-12 rounded-btn bg-warm1 text-blue font-bold flex items-center justify-center shrink-0">AA</span>
+        <div class="border border-bd p-6 flex items-start gap-4 mt-4 rounded-card">
+          <span class="w-12 h-12 bg-warm1 text-blue font-bold flex items-center justify-center shrink-0 rounded-lg">AA</span>
           <div>
             <p class="font-semibold text-sm">Ahmed Al-Rashid</p>
             <p class="text-xs text-faint">Senior Technical Writer</p>
@@ -176,7 +177,7 @@ tailwind.config = {
       </div>
 
       <aside class="space-y-8">
-        <div class="border border-bd p-6">
+        <div class="border border-bd p-6 rounded-card">
           <h3 class="text-xs plex uppercase tracking-wide text-faint mb-4">Table of Contents</h3>
           <ul class="space-y-3 text-sm">
             <li><a href="#rise-of-smart-manufacturing" class="hover:text-red">1. The Rise of Smart Manufacturing</a></li>
@@ -185,30 +186,30 @@ tailwind.config = {
           </ul>
         </div>
 
-        <div class="border border-bd p-6">
+        <div class="border border-bd p-6 rounded-card">
           <h3 class="text-xs plex uppercase tracking-wide text-faint mb-4">Related Products</h3>
           <div class="space-y-4">
             <a href="product-detail.html" class="flex items-center gap-3 group">
-              <span class="w-14 h-14 bg-warm1 rounded-btn flex items-center justify-center shrink-0"><img src="../assets/icons/icon-div-tools.svg" alt="" width="22" height="21"></span>
+              <span class="w-14 h-14 bg-warm1 flex items-center justify-center shrink-0 rounded-lg"><img src="../assets/icons/icon-div-tools.svg" alt="" width="22" height="21"></span>
               <span class="text-sm font-semibold group-hover:text-red">Modbus RTU Telemetry Unit</span>
             </a>
             <a href="product-detail.html" class="flex items-center gap-3 group">
-              <span class="w-14 h-14 bg-warm1 rounded-btn flex items-center justify-center shrink-0"><img src="../assets/icons/icon-div-smart.svg" alt="" width="24" height="21"></span>
+              <span class="w-14 h-14 bg-warm1 flex items-center justify-center shrink-0 rounded-lg"><img src="../assets/icons/icon-div-smart.svg" alt="" width="24" height="21"></span>
               <span class="text-sm font-semibold group-hover:text-red">ATEX-Certified Conveyor Sensor</span>
             </a>
           </div>
         </div>
 
-        <div class="border border-bd bg-warm3 p-6">
+        <div class="border border-bd bg-warm3 p-6 rounded-card">
           <h3 class="font-bold text-ink">SYSIDEX Insights</h3>
           <p class="text-sm text-body mt-2">Subscribe to get modern compliance standards, catalog releases, and technical reports delivered directly.</p>
           <form class="mt-4 space-y-2" onsubmit="return false;">
-            <input type="email" placeholder="your@email.com" class="w-full h-11 px-4 rounded-btn border border-bd text-sm outline-none placeholder:text-gray-500">
+            <input type="email" placeholder="your@email.com" class="w-full h-11 px-4 border border-bd text-sm outline-none placeholder:text-gray-500 rounded-lg">
             <button class="w-full h-11 bg-red text-white text-xs plex uppercase tracking-wide font-bold hover:bg-[#970012] transition-colors">Subscribe Now</button>
           </form>
         </div>
 
-        <div class="border border-bd p-6">
+        <div class="border border-bd p-6 rounded-card">
           <h3 class="text-xs plex uppercase tracking-wide text-faint mb-4">More from Industry Trends</h3>
           <ul class="space-y-3 text-sm">
             <li><a href="blog-post.html" class="hover:text-red">Predictive Maintenance for Vertical Transport</a></li>
@@ -246,7 +247,8 @@ tailwind.config = {
         <li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">ABOUT US</a></li>
 <li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">SERVICES</a></li>
 <li><a href="testimonials.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">TESTIMONIALS</a></li>
-<li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="clients.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="partners.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PARTNERS</a></li>
 <li><a href="blog.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CASE STUDIES</a></li>
 <li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PRODUCTS</a></li>
 <li><a href="careers.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CAREERS</a></li>

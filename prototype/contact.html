@@ -26,7 +26,7 @@ tailwind.config = {
         sans: ['"Hanken Grotesk"','sans-serif'],
         plex: ['"IBM Plex Sans"','sans-serif'],
       },
-      borderRadius: { btn: '12px' },
+      borderRadius: { btn: '12px', card: '12px' },
       boxShadow: {
         sm2: '0 1px 2px rgba(16,32,122,0.06)',
         card: '0 20px 40px -16px rgba(16,32,122,0.35)',
@@ -45,6 +45,7 @@ tailwind.config = {
   details[open] .chev{transform:rotate(180deg)}
 </style>
 
+<link rel="stylesheet" href="../assets/css/proto.css">
 </head>
 <body class="bg-white text-ink antialiased">
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-blue focus:text-white focus:px-4 focus:py-2">Skip to content</a>
@@ -120,28 +121,28 @@ tailwind.config = {
 
   <section class="max-w-[1440px] mx-auto px-6 md:px-16 pb-20">
     <div class="grid lg:grid-cols-[1.4fr_1fr] gap-12">
-      <div class="border border-bd rounded-lg p-8">
+      <div class="border border-bd p-8 rounded-card">
         <h2 class="text-xl font-bold text-ink mb-6">Send us a Message</h2>
         <form class="grid sm:grid-cols-2 gap-5" onsubmit="return false;">
           <div class="sm:col-span-1">
             <label class="block text-xs plex uppercase tracking-wide text-faint mb-2">Full Name</label>
-            <input type="text" placeholder="e.g., Jassim Al-Kuwari" class="w-full h-12 px-4 border border-bd rounded-btn text-sm outline-none focus:border-indigo">
+            <input type="text" placeholder="e.g., Jassim Al-Kuwari" class="w-full h-12 px-4 border border-bd text-sm outline-none focus:border-indigo rounded-lg">
           </div>
           <div class="sm:col-span-1">
             <label class="block text-xs plex uppercase tracking-wide text-faint mb-2">Email Address</label>
-            <input type="email" placeholder="e.g., jassim@company.qa" class="w-full h-12 px-4 border border-bd rounded-btn text-sm outline-none focus:border-indigo">
+            <input type="email" placeholder="e.g., jassim@company.qa" class="w-full h-12 px-4 border border-bd text-sm outline-none focus:border-indigo rounded-lg">
           </div>
           <div class="sm:col-span-1">
             <label class="block text-xs plex uppercase tracking-wide text-faint mb-2">Phone Number</label>
-            <input type="tel" placeholder="e.g., +974 5555 1234" class="w-full h-12 px-4 border border-bd rounded-btn text-sm outline-none focus:border-indigo">
+            <input type="tel" placeholder="e.g., +974 5555 1234" class="w-full h-12 px-4 border border-bd text-sm outline-none focus:border-indigo rounded-lg">
           </div>
           <div class="sm:col-span-1">
             <label class="block text-xs plex uppercase tracking-wide text-faint mb-2">Company Name</label>
-            <input type="text" placeholder="e.g., Qatar Petrochemicals" class="w-full h-12 px-4 border border-bd rounded-btn text-sm outline-none focus:border-indigo">
+            <input type="text" placeholder="e.g., Qatar Petrochemicals" class="w-full h-12 px-4 border border-bd text-sm outline-none focus:border-indigo rounded-lg">
           </div>
           <div class="sm:col-span-2">
             <label class="block text-xs plex uppercase tracking-wide text-faint mb-2">Subject of Enquiry</label>
-            <select class="w-full h-12 px-4 border border-bd rounded-btn text-sm outline-none focus:border-indigo text-faint">
+            <select class="w-full h-12 px-4 border border-bd text-sm outline-none focus:border-indigo text-faint rounded-lg">
               <option>Select subject...</option>
               <option>Product Quote Request</option>
               <option>Technical Support</option>
@@ -152,7 +153,7 @@ tailwind.config = {
           </div>
           <div class="sm:col-span-2">
             <label class="block text-xs plex uppercase tracking-wide text-faint mb-2">Your Message</label>
-            <textarea rows="5" placeholder="Provide project specs or general queries..." class="w-full px-4 py-3 border border-bd rounded-btn text-sm outline-none focus:border-indigo"></textarea>
+            <textarea rows="5" placeholder="Provide project specs or general queries..." class="w-full px-4 py-3 border border-bd text-sm outline-none focus:border-indigo rounded-lg"></textarea>
           </div>
           <div class="sm:col-span-2">
             <button type="submit" class="inline-flex items-center h-[48px] px-8 bg-red text-white text-sm plex font-bold uppercase tracking-wide hover:bg-[#970012] transition-colors">Send Message</button>
@@ -193,17 +194,17 @@ tailwind.config = {
       </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <article class="border border-bd rounded-lg p-8">
+      <article class="border border-bd p-8 rounded-card">
         <h3 class="text-lg font-bold text-ink">Ras Laffan Industrial City</h3>
         <p class="text-body text-sm mt-3">Heavy Machinery &amp; Safety Supplies</p>
         <p class="text-xs plex uppercase tracking-wide text-red font-semibold mt-4">Delivery under 24hrs</p>
       </article>
-      <article class="border border-bd rounded-lg p-8">
+      <article class="border border-bd p-8 rounded-card">
         <h3 class="text-lg font-bold text-ink">Mesaieed Industrial Area</h3>
         <p class="text-body text-sm mt-3">Rigging Equipment &amp; Valve Control</p>
         <p class="text-xs plex uppercase tracking-wide text-red font-semibold mt-4">Delivery under 24hrs</p>
       </article>
-      <article class="border border-bd rounded-lg p-8">
+      <article class="border border-bd p-8 rounded-card">
         <h3 class="text-lg font-bold text-ink">Doha Industrial Area</h3>
         <p class="text-body text-sm mt-3">IoT Deployment &amp; Smart Solutions</p>
         <p class="text-xs plex uppercase tracking-wide text-red font-semibold mt-4">Delivery under 24hrs</p>
@@ -237,7 +238,8 @@ tailwind.config = {
         <li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">ABOUT US</a></li>
 <li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">SERVICES</a></li>
 <li><a href="testimonials.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">TESTIMONIALS</a></li>
-<li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="clients.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="partners.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PARTNERS</a></li>
 <li><a href="blog.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CASE STUDIES</a></li>
 <li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PRODUCTS</a></li>
 <li><a href="careers.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CAREERS</a></li>

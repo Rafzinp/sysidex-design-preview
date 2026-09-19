@@ -26,7 +26,7 @@ tailwind.config = {
         sans: ['"Hanken Grotesk"','sans-serif'],
         plex: ['"IBM Plex Sans"','sans-serif'],
       },
-      borderRadius: { btn: '12px' },
+      borderRadius: { btn: '12px', card: '12px' },
       boxShadow: {
         sm2: '0 1px 2px rgba(16,32,122,0.06)',
         card: '0 20px 40px -16px rgba(16,32,122,0.35)',
@@ -45,6 +45,7 @@ tailwind.config = {
   details[open] .chev{transform:rotate(180deg)}
 </style>
 
+<link rel="stylesheet" href="../assets/css/proto.css">
 </head>
 <body class="bg-white text-ink antialiased">
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-blue focus:text-white focus:px-4 focus:py-2">Skip to content</a>
@@ -131,17 +132,17 @@ tailwind.config = {
       </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <article class="border border-bd p-8">
+      <article class="border border-bd p-8 rounded-card">
         <img src="../assets/icons/icon-div-tools.svg" alt="" width="28" height="27">
         <h3 class="text-lg font-bold text-ink mt-6">Complete Health Coverage</h3>
         <p class="text-body text-sm mt-3">Top-tier regional health plan, including dental and family wellness benefits in Qatar.</p>
       </article>
-      <article class="border border-bd p-8">
+      <article class="border border-bd p-8 rounded-card">
         <img src="../assets/icons/icon-div-smart.svg" alt="" width="33" height="29">
         <h3 class="text-lg font-bold text-ink mt-6">Continuous Growth</h3>
         <p class="text-body text-sm mt-3">Dedicated funding for technical certifications, ATEX courses, and regional training.</p>
       </article>
-      <article class="border border-bd p-8">
+      <article class="border border-bd p-8 rounded-card">
         <img src="../assets/icons/icon-div-elevator.svg" alt="" width="27" height="27">
         <h3 class="text-lg font-bold text-ink mt-6">Smart Innovation Hub</h3>
         <p class="text-body text-sm mt-3">Access to state-of-the-art testing spaces for IoT and industrial automation systems.</p>
@@ -161,41 +162,41 @@ tailwind.config = {
       </div>
 
       <div class="space-y-4">
-        <article class="border border-bd bg-white p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+        <article class="border border-bd bg-white p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8 rounded-card">
           <div class="flex-1">
             <div class="flex items-center gap-3 flex-wrap">
               <h3 class="font-bold text-ink">Industrial IoT Solutions Architect</h3>
-              <span class="text-xs plex uppercase tracking-wide bg-teal/10 text-teal px-3 py-1 rounded-btn">Engineering</span>
+              <span class="text-xs plex uppercase tracking-wide bg-teal/10 text-teal px-3 py-1 rounded-full">Engineering</span>
             </div>
             <p class="text-sm text-faint mt-2">Doha, Qatar &middot; 5+ Years Experience</p>
           </div>
           <a href="contact.html" class="inline-flex items-center justify-center h-11 px-6 bg-red text-white text-sm plex font-bold uppercase tracking-wide hover:bg-[#970012] transition-colors shrink-0">View Role</a>
         </article>
-        <article class="border border-bd bg-white p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+        <article class="border border-bd bg-white p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8 rounded-card">
           <div class="flex-1">
             <div class="flex items-center gap-3 flex-wrap">
               <h3 class="font-bold text-ink">Senior Mechanical Safety Consultant</h3>
-              <span class="text-xs plex uppercase tracking-wide bg-teal/10 text-teal px-3 py-1 rounded-btn">Safety Operations</span>
+              <span class="text-xs plex uppercase tracking-wide bg-teal/10 text-teal px-3 py-1 rounded-full">Safety Operations</span>
             </div>
             <p class="text-sm text-faint mt-2">Ras Laffan, Qatar &middot; 7+ Years Experience</p>
           </div>
           <a href="contact.html" class="inline-flex items-center justify-center h-11 px-6 bg-red text-white text-sm plex font-bold uppercase tracking-wide hover:bg-[#970012] transition-colors shrink-0">View Role</a>
         </article>
-        <article class="border border-bd bg-white p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+        <article class="border border-bd bg-white p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8 rounded-card">
           <div class="flex-1">
             <div class="flex items-center gap-3 flex-wrap">
               <h3 class="font-bold text-ink">Embedded Firmware Engineer</h3>
-              <span class="text-xs plex uppercase tracking-wide bg-teal/10 text-teal px-3 py-1 rounded-btn">IoT Systems</span>
+              <span class="text-xs plex uppercase tracking-wide bg-teal/10 text-teal px-3 py-1 rounded-full">IoT Systems</span>
             </div>
             <p class="text-sm text-faint mt-2">Doha, Qatar &middot; 3+ Years Experience</p>
           </div>
           <a href="contact.html" class="inline-flex items-center justify-center h-11 px-6 bg-red text-white text-sm plex font-bold uppercase tracking-wide hover:bg-[#970012] transition-colors shrink-0">View Role</a>
         </article>
-        <article class="border border-bd bg-white p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+        <article class="border border-bd bg-white p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8 rounded-card">
           <div class="flex-1">
             <div class="flex items-center gap-3 flex-wrap">
               <h3 class="font-bold text-ink">Sales Executive (Industrial Supplies)</h3>
-              <span class="text-xs plex uppercase tracking-wide bg-teal/10 text-teal px-3 py-1 rounded-btn">Business Development</span>
+              <span class="text-xs plex uppercase tracking-wide bg-teal/10 text-teal px-3 py-1 rounded-full">Business Development</span>
             </div>
             <p class="text-sm text-faint mt-2">Doha, Qatar &middot; 4+ Years Experience</p>
           </div>
@@ -265,7 +266,8 @@ tailwind.config = {
         <li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">ABOUT US</a></li>
 <li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">SERVICES</a></li>
 <li><a href="testimonials.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">TESTIMONIALS</a></li>
-<li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="clients.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="partners.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PARTNERS</a></li>
 <li><a href="blog.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CASE STUDIES</a></li>
 <li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PRODUCTS</a></li>
 <li><a href="careers.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CAREERS</a></li>

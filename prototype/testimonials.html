@@ -26,7 +26,7 @@ tailwind.config = {
         sans: ['"Hanken Grotesk"','sans-serif'],
         plex: ['"IBM Plex Sans"','sans-serif'],
       },
-      borderRadius: { btn: '12px' },
+      borderRadius: { btn: '12px', card: '12px' },
       boxShadow: {
         sm2: '0 1px 2px rgba(16,32,122,0.06)',
         card: '0 20px 40px -16px rgba(16,32,122,0.35)',
@@ -45,6 +45,7 @@ tailwind.config = {
   details[open] .chev{transform:rotate(180deg)}
 </style>
 
+<link rel="stylesheet" href="../assets/css/proto.css">
 </head>
 <body class="bg-white text-ink antialiased">
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-blue focus:text-white focus:px-4 focus:py-2">Skip to content</a>
@@ -118,77 +119,77 @@ tailwind.config = {
     <p class="text-body mt-4 max-w-xl">Discover how Sysidex is transforming operations for leading industrial, maritime, and construction enterprises in Qatar.</p>
 
     <div class="flex flex-wrap gap-3 mt-10">
-      <button class="text-xs plex uppercase tracking-wide px-4 py-2 rounded-btn bg-indigo text-white">All Sectors</button>
-      <button class="text-xs plex uppercase tracking-wide px-4 py-2 rounded-btn border border-bd text-faint hover:bg-warm3">Oil &amp; Gas</button>
-      <button class="text-xs plex uppercase tracking-wide px-4 py-2 rounded-btn border border-bd text-faint hover:bg-warm3">Construction</button>
-      <button class="text-xs plex uppercase tracking-wide px-4 py-2 rounded-btn border border-bd text-faint hover:bg-warm3">Smart Logistics</button>
-      <button class="text-xs plex uppercase tracking-wide px-4 py-2 rounded-btn border border-bd text-faint hover:bg-warm3">Maritime</button>
+      <button class="text-xs plex uppercase tracking-wide px-4 py-2 bg-indigo text-white rounded-full">All Sectors</button>
+      <button class="text-xs plex uppercase tracking-wide px-4 py-2 border border-bd text-faint hover:bg-warm3 rounded-full">Oil &amp; Gas</button>
+      <button class="text-xs plex uppercase tracking-wide px-4 py-2 border border-bd text-faint hover:bg-warm3 rounded-full">Construction</button>
+      <button class="text-xs plex uppercase tracking-wide px-4 py-2 border border-bd text-faint hover:bg-warm3 rounded-full">Smart Logistics</button>
+      <button class="text-xs plex uppercase tracking-wide px-4 py-2 border border-bd text-faint hover:bg-warm3 rounded-full">Maritime</button>
     </div>
   </section>
 
   <section class="max-w-[1440px] mx-auto px-6 md:px-16 pb-20">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       
-      <figure class="rounded-2xl border border-bd shadow-sm2 p-10">
+      <figure class="border border-bd shadow-sm2 p-10 rounded-card">
         <img src="../assets/icons/icon-quote.svg" alt="" width="34" height="24" class="opacity-70">
         <blockquote class="text-ink text-[15px] leading-relaxed mt-6">&ldquo;Sysidex&rsquo;s custom automated locker installations completely optimized our tool handovers in Mesaieed. Downtime dropped by 45% within three weeks of system launch.&rdquo;</blockquote>
         <figcaption class="flex items-center gap-3 mt-8">
-          <span class="w-12 h-12 rounded-btn bg-warm1 text-blue font-bold flex items-center justify-center">TA</span>
+          <span class="w-12 h-12 bg-warm1 text-blue font-bold flex items-center justify-center rounded-lg">TA</span>
           <span>
             <span class="block font-semibold text-sm">Eng. Tariq Al-Mansoor</span>
             <span class="block text-xs text-faint">VP of Infrastructure, Qatar Energy Logistics</span>
           </span>
         </figcaption>
       </figure>
-      <figure class="rounded-2xl border border-bd shadow-sm2 p-10">
+      <figure class="border border-bd shadow-sm2 p-10 rounded-card">
         <img src="../assets/icons/icon-quote.svg" alt="" width="34" height="24" class="opacity-70">
         <blockquote class="text-ink text-[15px] leading-relaxed mt-6">&ldquo;Their Zone 0 certified marine instruments gave us total peace of mind for explosive tanker environments.&rdquo;</blockquote>
         <figcaption class="flex items-center gap-3 mt-8">
-          <span class="w-12 h-12 rounded-btn bg-warm1 text-blue font-bold flex items-center justify-center">CH</span>
+          <span class="w-12 h-12 bg-warm1 text-blue font-bold flex items-center justify-center rounded-lg">CH</span>
           <span>
             <span class="block font-semibold text-sm">Capt. Hamid</span>
             <span class="block text-xs text-faint">Milaha Maritime</span>
           </span>
         </figcaption>
       </figure>
-      <figure class="rounded-2xl border border-bd shadow-sm2 p-10">
+      <figure class="border border-bd shadow-sm2 p-10 rounded-card">
         <img src="../assets/icons/icon-quote.svg" alt="" width="34" height="24" class="opacity-70">
         <blockquote class="text-ink text-[15px] leading-relaxed mt-6">&ldquo;Smart telemetry modules integrated with our existing PLC systems perfectly. Incredible industrial support.&rdquo;</blockquote>
         <figcaption class="flex items-center gap-3 mt-8">
-          <span class="w-12 h-12 rounded-btn bg-warm1 text-blue font-bold flex items-center justify-center">SV</span>
+          <span class="w-12 h-12 bg-warm1 text-blue font-bold flex items-center justify-center rounded-lg">SV</span>
           <span>
             <span class="block font-semibold text-sm">S. Varma</span>
             <span class="block text-xs text-faint">Doha Cement Factory</span>
           </span>
         </figcaption>
       </figure>
-      <figure class="rounded-2xl border border-bd shadow-sm2 p-10">
+      <figure class="border border-bd shadow-sm2 p-10 rounded-card">
         <img src="../assets/icons/icon-quote.svg" alt="" width="34" height="24" class="opacity-70">
         <blockquote class="text-ink text-[15px] leading-relaxed mt-6">&ldquo;Fast delivery to Ras Laffan was critical for our drilling schedule. Sysidex exceeded safety expectations.&rdquo;</blockquote>
         <figcaption class="flex items-center gap-3 mt-8">
-          <span class="w-12 h-12 rounded-btn bg-warm1 text-blue font-bold flex items-center justify-center">FS</span>
+          <span class="w-12 h-12 bg-warm1 text-blue font-bold flex items-center justify-center rounded-lg">FS</span>
           <span>
             <span class="block font-semibold text-sm">F. Sterling</span>
             <span class="block text-xs text-faint">Meridian Drilling</span>
           </span>
         </figcaption>
       </figure>
-      <figure class="rounded-2xl border border-bd shadow-sm2 p-10">
+      <figure class="border border-bd shadow-sm2 p-10 rounded-card">
         <img src="../assets/icons/icon-quote.svg" alt="" width="34" height="24" class="opacity-70">
         <blockquote class="text-ink text-[15px] leading-relaxed mt-6">&ldquo;Highest quality anti-static safety tapes we have sourced in the GCC region. Highly recommended.&rdquo;</blockquote>
         <figcaption class="flex items-center gap-3 mt-8">
-          <span class="w-12 h-12 rounded-btn bg-warm1 text-blue font-bold flex items-center justify-center">HA</span>
+          <span class="w-12 h-12 bg-warm1 text-blue font-bold flex items-center justify-center rounded-lg">HA</span>
           <span>
             <span class="block font-semibold text-sm">Hassan Ali</span>
             <span class="block text-xs text-faint">Al-Jaber Contracting</span>
           </span>
         </figcaption>
       </figure>
-      <figure class="rounded-2xl border border-bd shadow-sm2 p-10">
+      <figure class="border border-bd shadow-sm2 p-10 rounded-card">
         <img src="../assets/icons/icon-quote.svg" alt="" width="34" height="24" class="opacity-70">
         <blockquote class="text-ink text-[15px] leading-relaxed mt-6">&ldquo;Superb engineering consults during our IoT platform migration. Excellent regional expertise.&rdquo;</blockquote>
         <figcaption class="flex items-center gap-3 mt-8">
-          <span class="w-12 h-12 rounded-btn bg-warm1 text-blue font-bold flex items-center justify-center">IC</span>
+          <span class="w-12 h-12 bg-warm1 text-blue font-bold flex items-center justify-center rounded-lg">IC</span>
           <span>
             <span class="block font-semibold text-sm">Ing. Clara</span>
             <span class="block text-xs text-faint">Smart Doha Port Authority</span>
@@ -244,7 +245,8 @@ tailwind.config = {
         <li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">ABOUT US</a></li>
 <li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">SERVICES</a></li>
 <li><a href="testimonials.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">TESTIMONIALS</a></li>
-<li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="clients.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="partners.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PARTNERS</a></li>
 <li><a href="blog.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CASE STUDIES</a></li>
 <li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PRODUCTS</a></li>
 <li><a href="careers.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CAREERS</a></li>

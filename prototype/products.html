@@ -26,7 +26,7 @@ tailwind.config = {
         sans: ['"Hanken Grotesk"','sans-serif'],
         plex: ['"IBM Plex Sans"','sans-serif'],
       },
-      borderRadius: { btn: '12px' },
+      borderRadius: { btn: '12px', card: '12px' },
       boxShadow: {
         sm2: '0 1px 2px rgba(16,32,122,0.06)',
         card: '0 20px 40px -16px rgba(16,32,122,0.35)',
@@ -45,8 +45,9 @@ tailwind.config = {
   details[open] .chev{transform:rotate(180deg)}
 </style>
 
+<link rel="stylesheet" href="../assets/css/proto.css">
 </head>
-<body class="bg-white text-ink antialiased">
+<body class="bg-white text-ink antialiased" data-scope="all">
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-blue focus:text-white focus:px-4 focus:py-2">Skip to content</a>
 
 <header class="border-b border-bd shadow-sm2">
@@ -105,27 +106,25 @@ tailwind.config = {
 
 <div class="border-b border-bd bg-warm3">
   <div class="max-w-[1440px] mx-auto px-6 md:px-16 h-14 flex items-center gap-2 text-sm plex text-faint">
-    <a href="index.html" class="hover:text-red">Home</a><span class="text-bdlight">/</span><span class="text-ink font-medium">Products</span>
+    <a href="index.html" class="hover:text-red">Home</a><span class="text-bdlight">/</span><span class="text-ink font-medium" id="crumb-current">Products</span>
   </div>
 </div>
 
 <main id="main">
-  
-  <section class="max-w-[1440px] mx-auto px-6 md:px-16 pt-14 pb-8">
+  <section class="max-w-[1440px] mx-auto px-6 md:px-16 pt-14 pb-6">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-bd pb-6">
       <div>
-        <h1 class="text-[32px] font-bold text-blue leading-tight">All Products</h1>
-        <p class="text-body mt-1 max-w-2xl">Browse our complete range of industrial, smart, and engineering products.</p>
+        <h1 id="listing-title" class="text-[32px] font-bold text-blue leading-tight">All Products</h1>
+        <p id="listing-sub" class="text-body mt-1 max-w-2xl">Browse our complete range of industrial, smart, and engineering products.</p>
       </div>
       <div class="flex items-center gap-3 shrink-0">
-        <span class="text-xs plex text-faint">12 products</span>
+        <span id="listing-count" class="text-xs plex text-faint" aria-live="polite"></span>
         <label class="flex items-center gap-2 text-sm plex">
           <span class="text-faint">Sort by:</span>
-          <select class="border border-bd h-10 px-3 text-sm text-ink outline-none bg-white">
-            <option>Relevance</option>
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
-            <option>Newest First</option>
+          <select id="listing-sort" class="border border-bd h-10 px-3 text-sm text-ink outline-none bg-white rounded-lg">
+            <option value="relevance">Relevance</option>
+            <option value="az">Name: A to Z</option>
+            <option value="new">New first</option>
           </select>
         </label>
       </div>
@@ -133,286 +132,40 @@ tailwind.config = {
   </section>
 
   <section class="max-w-[1440px] mx-auto px-6 md:px-16 pb-8">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-impact-wrench.jpg" alt="Cordless Impact Wrench 20V Brushless Motor" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          <span class="absolute top-3 left-3 bg-red text-white text-[10px] plex uppercase tracking-wide px-2 py-1 rounded">New</span>
-          <button type="button" aria-label="Add Cordless Impact Wrench 20V Brushless Motor to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Power Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Cordless Impact Wrench 20V Brushless Motor</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Cordless Impact Wrench 20V Brushless Motor to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-angle-grinder.jpg" alt="Angle Grinder 125mm 1200W Heavy Duty" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          
-          <button type="button" aria-label="Add Angle Grinder 125mm 1200W Heavy Duty to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Cutting Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Angle Grinder 125mm 1200W Heavy Duty</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Angle Grinder 125mm 1200W Heavy Duty to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-circular-saw.jpg" alt="Circular Saw 185mm 1400W Professional" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          <span class="absolute top-3 left-3 bg-red text-white text-[10px] plex uppercase tracking-wide px-2 py-1 rounded">New</span>
-          <button type="button" aria-label="Add Circular Saw 185mm 1400W Professional to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Cutting Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Circular Saw 185mm 1400W Professional</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Circular Saw 185mm 1400W Professional to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-jigsaw.jpg" alt="Electric Jigsaw 800W Variable Speed Control" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          
-          <button type="button" aria-label="Add Electric Jigsaw 800W Variable Speed Control to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Precision Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Electric Jigsaw 800W Variable Speed Control</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Electric Jigsaw 800W Variable Speed Control to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-reciprocating-saw.jpg" alt="Reciprocating Saw 1100W Quick-Change" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          
-          <button type="button" aria-label="Add Reciprocating Saw 1100W Quick-Change to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Demolition Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Reciprocating Saw 1100W Quick-Change</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Reciprocating Saw 1100W Quick-Change to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-orbital-sander.jpg" alt="Orbital Sander 350W Dust Collection System" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          <span class="absolute top-3 left-3 bg-red text-white text-[10px] plex uppercase tracking-wide px-2 py-1 rounded">New</span>
-          <button type="button" aria-label="Add Orbital Sander 350W Dust Collection System to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Finishing Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Orbital Sander 350W Dust Collection System</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Orbital Sander 350W Dust Collection System to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-heat-gun.jpg" alt="Heat Gun 2000W Dual Temperature Mode" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          
-          <button type="button" aria-label="Add Heat Gun 2000W Dual Temperature Mode to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Specialty Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Heat Gun 2000W Dual Temperature Mode</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Heat Gun 2000W Dual Temperature Mode to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-rotary-hammer.jpg" alt="Rotary Hammer SDS-Plus 800W Anti-Vibration" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          
-          <button type="button" aria-label="Add Rotary Hammer SDS-Plus 800W Anti-Vibration to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Drilling Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Rotary Hammer SDS-Plus 800W Anti-Vibration</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Rotary Hammer SDS-Plus 800W Anti-Vibration to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-hammer-drill.jpg" alt="Brushless Hammer Drill 18V High Torque" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          <span class="absolute top-3 left-3 bg-red text-white text-[10px] plex uppercase tracking-wide px-2 py-1 rounded">New</span>
-          <button type="button" aria-label="Add Brushless Hammer Drill 18V High Torque to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Power Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Brushless Hammer Drill 18V High Torque</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Brushless Hammer Drill 18V High Torque to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-belt-sander.jpg" alt="Belt Sander 900W Variable Speed Heavy Duty" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          
-          <button type="button" aria-label="Add Belt Sander 900W Variable Speed Heavy Duty to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Finishing Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Belt Sander 900W Variable Speed Heavy Duty</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Belt Sander 900W Variable Speed Heavy Duty to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-mitre-saw.jpg" alt="Mitre Saw 254mm Slide Compound 1800W" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          
-          <button type="button" aria-label="Add Mitre Saw 254mm Slide Compound 1800W to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Cutting Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Mitre Saw 254mm Slide Compound 1800W</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Mitre Saw 254mm Slide Compound 1800W to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="border border-bd bg-white group">
-        <a href="product-detail.html" class="relative h-48 bg-warm1 overflow-hidden flex items-center justify-center">
-          <img src="../assets/images/products/product-cordless-screwdriver.jpg" alt="Cordless Screwdriver 3.6V USB Rechargeable" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-          
-          <button type="button" aria-label="Add Cordless Screwdriver 3.6V USB Rechargeable to wishlist" onclick="event.preventDefault()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-bd shadow-sm2 flex items-center justify-center hover:border-red">
-            <img src="../assets/icons/icon-wishlist.svg" alt="" width="16" height="16">
-          </button>
-        </a>
-        <div class="p-5">
-          <p class="text-xs plex text-bdlight">Power Tools</p>
-          <h3 class="font-bold text-ink text-sm mt-1 leading-snug"><a href="product-detail.html" class="hover:text-red">Cordless Screwdriver 3.6V USB Rechargeable</a></h3>
-          <div class="flex items-center justify-end mt-4">
-            <button type="button" aria-label="Add Cordless Screwdriver 3.6V USB Rechargeable to cart" onclick="event.preventDefault()" class="w-8 h-8 rounded-lg bg-[#f0eded] hover:bg-[#e6dfdc] flex items-center justify-center">
-              <img src="../assets/icons/icon-add-cart-2.svg" alt="" width="15" height="15">
-            </button>
-          </div>
-        </div>
-      </article>
-</div>
-  </section>
-  
-  <section class="max-w-[1440px] mx-auto px-6 md:px-16 pb-6">
-    <div class="flex items-center justify-center gap-2 mt-14">
-      <a href="#" class="w-10 h-10 flex items-center justify-center text-sm plex bg-blue text-white font-semibold">1</a><a href="#" class="w-10 h-10 flex items-center justify-center text-sm plex border border-bd text-ink hover:bg-warm3">2</a><a href="#" class="w-10 h-10 flex items-center justify-center text-sm plex border border-bd text-ink hover:bg-warm3">3</a>
-      <span class="w-10 h-10 flex items-center justify-center text-sm plex text-faint">&hellip;</span>
-      <a href="#" class="w-10 h-10 flex items-center justify-center border border-bd text-ink hover:bg-warm3 text-sm plex">8</a>
-      <a href="#" class="h-10 px-4 flex items-center gap-2 border border-bd text-ink hover:bg-warm3 text-sm plex ml-2">Next <img src="../assets/icons/icon-chevron-right.svg" alt="" width="9" height="9"></a>
-    </div>
+    <div id="listing-chips" class="flex flex-wrap gap-2 mb-8" role="navigation" aria-label="Filter by category"></div>
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    <noscript><p class="text-body">Please enable JavaScript to browse the catalog.</p></noscript>
+    <nav id="listing-pager" class="flex flex-wrap items-center justify-center gap-2 mt-14" aria-label="Pagination"></nav>
   </section>
 
-  
   <section class="max-w-[900px] mx-auto px-6 py-20">
     <div class="text-center mb-10">
       <h2 class="text-[28px] font-bold text-blue">Frequently Asked Technical Questions</h2>
       <p class="text-body mt-2">Expert answers to common queries regarding our engineering supplies and smart solutions.</p>
     </div>
     <div class="space-y-3">
-      <details class="border border-bd rounded-lg open:bg-warm3">
+      <details class="border border-bd open:bg-warm3 rounded-card">
         <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer font-semibold text-sm">
           What certifications do your lifting and rigging equipments carry?
           <img src="../assets/icons/icon-faq-toggle.svg" alt="" width="19" height="20" class="chev transition-transform shrink-0">
         </summary>
         <p class="px-5 pb-4 text-sm text-body">Contact our engineering team for the current certification and inspection documentation for this equipment category.</p>
       </details>
-      <details class="border border-bd rounded-lg open:bg-warm3">
+      <details class="border border-bd open:bg-warm3 rounded-card">
         <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer font-semibold text-sm">
           How customizable are the smart parcel lockers?
           <img src="../assets/icons/icon-faq-toggle.svg" alt="" width="19" height="20" class="chev transition-transform shrink-0">
         </summary>
         <p class="px-5 pb-4 text-sm text-body">Contact our engineering team to discuss configuration options for compartment size, quantity, access method, and software integration.</p>
       </details>
-      <details class="border border-bd rounded-lg open:bg-warm3">
+      <details class="border border-bd open:bg-warm3 rounded-card">
         <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer font-semibold text-sm">
           Do you provide 24/7 emergency elevator maintenance?
           <img src="../assets/icons/icon-faq-toggle.svg" alt="" width="19" height="20" class="chev transition-transform shrink-0">
         </summary>
         <p class="px-5 pb-4 text-sm text-body">Contact our engineering team for details on AMC coverage and emergency call-out response for your site.</p>
       </details>
-      <details class="border border-bd rounded-lg open:bg-warm3">
+      <details class="border border-bd open:bg-warm3 rounded-card">
         <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer font-semibold text-sm">
           Are your explosion-proof materials suitable for Zone 1 and Zone 2?
           <img src="../assets/icons/icon-faq-toggle.svg" alt="" width="19" height="20" class="chev transition-transform shrink-0">
@@ -449,7 +202,8 @@ tailwind.config = {
         <li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">ABOUT US</a></li>
 <li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">SERVICES</a></li>
 <li><a href="testimonials.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">TESTIMONIALS</a></li>
-<li><a href="about.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="clients.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CLIENTS</a></li>
+<li><a href="partners.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PARTNERS</a></li>
 <li><a href="blog.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CASE STUDIES</a></li>
 <li><a href="products.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">PRODUCTS</a></li>
 <li><a href="careers.html" class="text-sm text-[#f7f5ee] hover:text-red border-b border-transparent hover:border-red transition-colors">CAREERS</a></li>
@@ -480,5 +234,7 @@ tailwind.config = {
     </div>
   </div>
 </footer>
+<script src="../assets/js/catalog.js"></script>
+<script src="../assets/js/ui.js"></script>
 </body>
 </html>

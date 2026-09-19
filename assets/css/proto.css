@@ -1,0 +1,27 @@
+/*
+  Shared prototype styles (loaded after the Tailwind CDN).
+
+  Radius scale (one value per component type):
+    card  12px  -> .rounded-card : cards, panels, media, FAQ items, logo tiles, tables
+    ctrl   8px  -> .rounded-lg   : inputs, selects, search, small icon buttons
+    tag    6px  -> .rounded-md   : badges on top of images
+    pill  full  -> .rounded-full : chips, filters, pagination dots
+*/
+
+/* Logo marquee: groups of logos scroll left; JS sets --k (number of repeated groups). */
+.sx-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.sx-marquee-track { --k: 2; display: flex; width: max-content; animation: sx-scroll var(--dur, 40s) linear infinite; }
+.sx-marquee-group { display: flex; gap: 1rem; padding-right: 1rem; flex-shrink: 0; }
+.sx-marquee:hover .sx-marquee-track,
+.sx-marquee:focus-within .sx-marquee-track,
+.sx-marquee.is-paused .sx-marquee-track { animation-play-state: paused; }
+@keyframes sx-scroll { to { transform: translateX(calc(-100% / var(--k))); } }
+@media (prefers-reduced-motion: reduce) {
+  .sx-marquee { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
+  .sx-marquee-track { animation: none; }
+  .sx-marquee-group[aria-hidden="true"] { display: none; }
+}
+
+/* Logo tile: same size in the marquee and on the full list pages. */
+.sx-logo img { filter: grayscale(1); opacity: .75; transition: filter .2s, opacity .2s; }
+.sx-logo:hover img, .sx-logo:focus-within img { filter: none; opacity: 1; }
