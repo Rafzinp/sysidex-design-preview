@@ -2,10 +2,12 @@
   Sysidex prototype commerce layer: cart + sales inquiry, one interaction model for every page.
 
   Journeys
-    Add to Cart     card / detail button -> item added (or quantity raised if already there) -> toast "View cart"
-                    -> cart drawer (review, change quantity, remove + undo) -> Proceed to Checkout
-                    -> request form (cart summary) -> status with reference ID
-    Sales Inquiry   card / detail button / "Request Quote" -> request form (product context) -> status
+    The cart is a QUOTE LIST (no prices), the same model bushtorm.com uses: items + quantities are sent to
+    the sales team, who reply with availability and pricing.
+    Add to Cart     card / detail button -> cart panel opens at once with an "Added" banner (or "Quantity
+                    updated" if the item was already there) -> change quantity / remove + undo
+                    -> Proceed to Checkout -> enquiry form (order summary) -> status with reference ID
+    Sales Inquiry   detail button / "Request Quote" -> enquiry form (product context) -> status
 
   Figma: cart drawer 1455:5952, request form 1455:6186, status 1455:6401 (file Osy2khiKqnrxdLGTmWNBEP).
   This is a static prototype: nothing is sent anywhere. fakeSend() simulates the network call.
@@ -26,7 +28,6 @@
   function setHTML(el, html) { el.innerHTML = html; }
   function $(s, r) { return (r || document).querySelector(s); }
   function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
-  function money(n) { return SX.SHOP.currency + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
   function byId(id) { return SX.PRODUCTS.filter(function (p) { return p.id === id; })[0]; }
 
   function safeStore(kind) {
@@ -38,17 +39,16 @@
   function write(store, key, value) { try { store.setItem(key, JSON.stringify(value)); } catch (e) { /* storage full: keep working in memory */ } }
 
   /* ---------- cart state ---------- */
-  var cart = read(LS, K_CART, []).filter(function (l) { return byId(l.id) && byId(l.id).price; });
+  var cart = read(LS, K_CART, []).filter(function (l) { return byId(l.id) && l.qty > 0; });
 
   function saveCart() { write(LS, K_CART, cart); refreshHeader(true); }
   function count() { return cart.reduce(function (n, l) { return n + l.qty; }, 0); }
-  function subtotal() { return cart.reduce(function (n, l) { return n + l.qty * byId(l.id).price; }, 0); }
   function line(id) { return cart.filter(function (l) { return l.id === id; })[0]; }
 
   /** Returns 'added' | 'updated' | 'max' | 'none'. */
   function add(id, qty) {
     var p = byId(id);
-    if (!p || !p.price) return 'none';
+    if (!p) return 'none';
     qty = qty || 1;
     var l = line(id);
     if (!l) { cart.push({ id: id, qty: Math.min(qty, MAX) }); saveCart(); return 'added'; }
@@ -84,7 +84,7 @@
     var n = count();
     $$('[data-sx-cart-label]').forEach(function (el) { el.textContent = n + (n === 1 ? ' Item' : ' Items'); });
     $$('[data-sx-cart]').forEach(function (b) {
-      b.setAttribute('aria-label', 'Open cart, ' + n + (n === 1 ? ' item' : ' items') + (n ? ', subtotal ' + money(subtotal()) : ''));
+      b.setAttribute('aria-label', 'Open cart, ' + n + (n === 1 ? ' item' : ' items'));
     });
     $$('[data-sx-cart-badge]').forEach(function (el) {
       el.textContent = n > 99 ? '99+' : String(n);
@@ -209,7 +209,17 @@
     else renderStatus();
   }
 
-  /* ---------- view 1: cart (Figma 1455:5952) ---------- */
+  /* ---------- view 1: cart (Figma 1455:5952; quote list, no prices) ---------- */
+  function bannerHTML() {
+    var a = ctx.added;
+    if (!a) return '';
+    var p = byId(a.id), l = line(a.id);
+    var msg = a.res === 'added' ? 'Added to cart' : a.res === 'updated' ? 'Quantity updated to ' + (l ? l.qty : '') : 'Maximum ' + MAX + ' per order. For larger volumes, send a Sales Inquiry.';
+    var ok = a.res !== 'max';
+    return '<div id="sx-banner" role="status" class="mx-8 mt-5 flex items-start gap-2 rounded-lg px-4 py-3 text-[13px] ' + (ok ? 'bg-[#e6f4ea] text-[#0d6d4a]' : 'bg-[#fff4e5] text-[#9a4a00]') + '">' +
+      '<span aria-hidden="true" class="font-bold">' + (ok ? '✓' : '!') + '</span><span><strong>' + esc(msg) + '</strong>' + (ok ? '<br><span class="font-normal">' + esc(p.title) + '</span>' : '') + '</span></div>';
+  }
+
   function renderCart() {
     var n = count();
     var head = header('<div class="flex items-center gap-[10px]"><h2 id="sx-title" tabindex="-1" class="text-[18px] font-extrabold text-[#1b2a4a] outline-none">Cart</h2>' +
@@ -220,7 +230,7 @@
         '<div class="sx-body flex flex-col items-center justify-center text-center px-8 gap-5">' +
         '<div class="w-16 h-16 rounded-full bg-[#f3f4f6] flex items-center justify-center"><img src="' + ICON + 'icon-cart.svg" alt="" width="24" height="22"></div>' +
         '<div><p class="text-[18px] font-extrabold text-[#1b2a4a]">Your cart is empty</p>' +
-        '<p class="text-[14px] leading-[22px] text-[#6b7280] mt-2 max-w-[320px]">Add tools and equipment to your cart, or ask our sales team about products that are quoted on request.</p></div>' +
+        '<p class="text-[14px] leading-[22px] text-[#6b7280] mt-2 max-w-[320px]">Add products to your cart to request a quotation, or send a Sales Inquiry about a single item.</p></div>' +
         '<button type="button" data-sx-inquire-open class="text-[13px] font-bold text-[#1b2a4a] underline underline-offset-2 hover:text-[#bb0017]">Send a Sales Inquiry instead</button></div>' +
         '<div class="border-t border-[#e0e0e0] px-8 pt-5 pb-6 shrink-0"><a href="products.html" data-sx-continue class="' + CTA + '">Browse Products ' + ARROW + '</a></div>');
       return;
@@ -228,30 +238,34 @@
 
     var items = cart.map(function (l) {
       var p = byId(l.id);
-      return '<li class="flex items-center gap-4 px-8 py-5 border-b border-[#e0e0e0]" data-line="' + esc(l.id) + '">' + thumb(p, 72) +
+      var fresh = ctx.added && ctx.added.id === l.id && ctx.added.res !== 'max';
+      return '<li class="flex items-center gap-4 px-8 py-5 border-b border-[#e0e0e0]' + (fresh ? ' bg-[#f7f8fa]' : '') + '" data-line="' + esc(l.id) + '">' + thumb(p, 72) +
         '<div class="flex-1 min-w-0 flex flex-col gap-1">' +
         '<p class="text-[11px] font-bold uppercase text-[#6b7280]">' + esc(p.sub) + '</p>' +
         '<a href="product-detail.html?id=' + esc(p.id) + '" class="text-[13px] leading-[18px] font-bold text-[#1b2a4a] hover:text-[#bb0017]">' + esc(p.title) + '</a>' +
-        '<div class="flex items-center justify-between gap-3">' +
-        '<span class="text-[14px] font-extrabold text-[#1b2a4a]">' + money(p.price) + '</span>' +
+        '<div class="flex items-center justify-between gap-3 mt-1">' +
         '<div class="flex items-center gap-3" role="group" aria-label="Quantity for ' + esc(p.title) + '">' +
         '<button type="button" class="' + STEP + '" data-dec="' + esc(l.id) + '" aria-label="Decrease quantity"' + (l.qty <= 1 ? ' disabled' : '') + '>−</button>' +
         '<span class="min-w-[20px] text-center text-[15px] font-bold text-[#1c1b1b]">' + l.qty + '</span>' +
-        '<button type="button" class="' + STEP + '" data-inc="' + esc(l.id) + '" aria-label="Increase quantity"' + (l.qty >= MAX ? ' disabled title="Maximum ' + MAX + ' per order"' : '') + '>+</button></div></div>' +
-        '<div class="flex items-center justify-between text-[12px] text-[#6b7280]"><span>' + (l.qty > 1 ? 'Line total ' + money(l.qty * p.price) : '&nbsp;') + '</span>' +
-        '<button type="button" class="underline underline-offset-2 hover:text-[#bb0017]" data-remove="' + esc(l.id) + '" aria-label="Remove ' + esc(p.title) + ' from cart">Remove</button></div>' +
+        '<button type="button" class="' + STEP + '" data-inc="' + esc(l.id) + '" aria-label="Increase quantity"' + (l.qty >= MAX ? ' disabled title="Maximum ' + MAX + ' per order"' : '') + '>+</button></div>' +
+        '<button type="button" class="text-[12px] text-[#6b7280] underline underline-offset-2 hover:text-[#bb0017]" data-remove="' + esc(l.id) + '" aria-label="Remove ' + esc(p.title) + ' from cart">Remove</button></div>' +
         '</div></li>';
     }).join('');
 
     var hitMax = cart.some(function (l) { return l.qty >= MAX; });
     shell(head +
-      '<div class="sx-body"><ul>' + items + '</ul>' +
+      '<div class="sx-body">' + bannerHTML() + '<ul>' + items + '</ul>' +
       (hitMax ? '<p class="px-8 py-4 text-[12px] text-[#6b7280]">Need more than ' + MAX + ' of one item? <button type="button" data-sx-inquire-open class="font-bold text-[#1b2a4a] underline underline-offset-2">Ask for a bulk quote</button>.</p>' : '') + '</div>' +
       '<div class="border-t border-[#e0e0e0] px-8 pt-5 pb-6 flex flex-col gap-4 shrink-0">' +
-      '<div class="flex items-baseline justify-between"><span class="text-[13px] font-bold text-[#1c1b1b]">Subtotal</span><span class="text-[18px] font-extrabold text-[#1b2a4a]">' + money(subtotal()) + '</span></div>' +
-      '<p class="text-[12px] leading-[18px] text-[#6b7280] -mt-2">No payment is taken online. Our team confirms availability, delivery and final pricing with you.</p>' +
+      '<div class="flex items-baseline justify-between"><span class="text-[13px] font-bold text-[#1c1b1b]">Total items</span><span class="text-[18px] font-extrabold text-[#1b2a4a]">' + n + '</span></div>' +
+      '<p class="text-[12px] leading-[18px] text-[#6b7280] -mt-2">No payment is taken online. Send your list and our team replies with availability, delivery and pricing.</p>' +
       '<button type="button" data-sx-checkout class="' + CTA + '">Proceed to Checkout ' + ARROW + '</button>' +
       '<p class="text-center text-[12px] text-[#6b7280]">or <button type="button" data-sx-continue class="font-bold text-[#1b2a4a] underline underline-offset-2 hover:text-[#bb0017]">Continue Shopping</button></p></div>');
+
+    var banner = $('#sx-banner');
+    if (banner) setTimeout(function () { if (banner.isConnected) banner.remove(); }, 6000);
+    var fresh = ctx.added && $('[data-line="' + ctx.added.id + '"]', $('#sx-drawer'));
+    if (fresh) fresh.scrollIntoView({ block: 'nearest' });
   }
 
   /* ---------- view 2: request form (Figma 1455:6186) ---------- */
@@ -260,6 +274,8 @@
     { name: 'email', label: 'Email Address', required: true, type: 'email', ph: 'e.g. john@company.com', auto: 'email' },
     { name: 'phone', label: 'Phone Number', required: true, type: 'tel', ph: 'e.g. +974 5555 1234', auto: 'tel' },
     { name: 'company', label: 'Company Name', required: true, type: 'text', ph: 'e.g. Sysidex Contracting WLL', auto: 'organization' },
+    { name: 'city', label: 'City', required: false, type: 'text', ph: 'e.g. Doha', auto: 'address-level2', half: true },
+    { name: 'country', label: 'Country', required: false, type: 'text', ph: 'e.g. Qatar', auto: 'country-name', half: true },
     { name: 'message', label: 'Message / Technical Notes', required: false, type: 'textarea', ph: 'Specify quantity, destination, or required customized specifications...' }
   ];
   var INPUT = 'w-full px-3 border border-[#e0e0e0] rounded-lg bg-white text-[14px] text-[#1c1b1b] placeholder:text-[#6b7280] focus:outline-none focus:border-[#2b3990]';
@@ -271,8 +287,8 @@
       var rows = cart.map(function (l) {
         return '<li class="flex justify-between gap-3 text-[13px]"><span class="min-w-0">' + esc(byId(l.id).title) + '</span><span class="shrink-0 font-bold text-[#1b2a4a]">×' + l.qty + '</span></li>';
       }).join('');
-      return '<div class="rounded-lg border border-[#e0e0e0] bg-[#f7f8fa] p-4"><p class="text-[11px] font-bold uppercase text-[#6b7280] mb-2">Your order (' + count() + (count() === 1 ? ' item' : ' items') + ')</p><ul class="space-y-1.5">' + rows + '</ul>' +
-        '<p class="flex justify-between text-[13px] mt-3 pt-3 border-t border-[#e0e0e0]"><span class="text-[#6b7280]">Estimated subtotal</span><span class="font-extrabold text-[#1b2a4a]">' + money(subtotal()) + '</span></p></div>';
+      return '<div class="rounded-lg border border-[#e0e0e0] bg-[#f7f8fa] p-4"><p class="text-[11px] font-bold uppercase text-[#6b7280] mb-2">Your list (' + count() + (count() === 1 ? ' item' : ' items') + ')</p><ul class="space-y-1.5">' + rows + '</ul>' +
+        '</div>';
     }
     var p = ctx.productId && byId(ctx.productId);
     if (!p) return '';
@@ -292,11 +308,11 @@
       var control = f.type === 'textarea'
         ? '<textarea ' + common + ' rows="4" placeholder="' + esc(f.ph) + '" class="' + INPUT + ' py-3 min-h-[100px] resize-y' + (err ? ' sx-field-error' : '') + '">' + esc(val) + '</textarea>'
         : '<input ' + common + ' type="' + f.type + '" value="' + esc(val) + '" placeholder="' + esc(f.ph) + '" class="' + INPUT + ' h-[42px]' + (err ? ' sx-field-error' : '') + '">';
-      return '<div class="flex flex-col gap-[6px]"><label for="' + id + '" class="text-[13px] font-bold text-[#1c1b1b]">' + esc(f.label) + (f.required ? ' *' : '') + '</label>' + control +
+      return '<div class="flex flex-col gap-[6px]' + (f.half ? '' : ' col-span-2') + '"><label for="' + id + '" class="text-[13px] font-bold text-[#1c1b1b]">' + esc(f.label) + (f.required ? ' *' : '') + '</label>' + control +
         (err ? '<p id="' + id + '-err" class="text-[12px] text-[#bb0017]">' + esc(err) + '</p>' : '') + '</div>';
     }).join('');
 
-    var sub = ctx.from === 'cart' ? 'Confirm your company details and we will send a wholesale price quotation for this order.' : 'Provide your company details below to request a wholesale price quotation.';
+    var sub = ctx.from === 'cart' ? 'Confirm your company details and we will send a wholesale price quotation for your list.' : 'Provide your company details below to request a wholesale price quotation.';
     shell(header('<button type="button" data-sx-back class="flex items-center gap-2 text-[14px] font-bold text-[#6b7280] hover:text-[#1b2a4a]"><span aria-hidden="true">←</span> ' + esc(backLabel()) + '</button>') +
       '<form id="sx-form" novalidate class="flex flex-col flex-1 min-h-0">' +
       '<div class="sx-body p-8 flex flex-col gap-6">' +
@@ -304,7 +320,7 @@
       contextBlock() +
       (errCount ? '<div role="alert" class="rounded-lg border border-[#bb0017]/30 bg-[#bb0017]/5 px-4 py-3 text-[13px] text-[#bb0017]">Please fix ' + errCount + (errCount === 1 ? ' field' : ' fields') + ' below.</div>' : '') +
       (banner ? '<div role="alert" class="rounded-lg border border-[#bb0017]/30 bg-[#bb0017]/5 px-4 py-3 text-[13px] text-[#bb0017]">' + esc(banner) + '</div>' : '') +
-      '<div class="flex flex-col gap-4">' + fields + '</div>' +
+      '<div class="grid grid-cols-2 gap-4">' + fields + '</div>' +
       '<p class="text-[12px] leading-[18px] text-[#6b7280]">We only use these details to respond to your request.</p></div>' +
       '<div class="border-t border-[#e0e0e0] p-6 shrink-0"><button type="submit" class="' + CTA + '"' + (busy ? ' disabled aria-busy="true"' : '') + '>' +
       (busy ? '<span class="sx-spin" aria-hidden="true"></span> Submitting…' : 'Submit Request ' + ARROW) + '</button></div></form>');
@@ -361,7 +377,7 @@
   }
 
   function summary() {
-    if (ctx.from === 'cart') return count() + (count() === 1 ? ' item' : ' items') + ' · estimated ' + money(subtotal());
+    if (ctx.from === 'cart') return count() + (count() === 1 ? ' item' : ' items') + ' sent for quotation';
     var p = ctx.productId && byId(ctx.productId);
     return p ? p.title : 'General sales inquiry';
   }
@@ -405,19 +421,11 @@
   function addToCart(id, qty, btn, flashLabel) {
     var p = byId(id);
     if (!p) return;
-    if (!p.price) { opener = btn; openDrawer('inquiry', { from: 'listing', productId: id }); return; }
-    var res = add(id, qty);
-    var l = line(id);
-    if (res === 'max') {
-      toast({ tone: 'warn', title: 'Maximum ' + MAX + ' per order', detail: 'For larger volumes, send a Sales Inquiry.', action: 'Sales Inquiry', onAction: function () { openDrawer('inquiry', { from: 'details', productId: id }); } });
-      return;
-    }
-    flashButton(btn, flashLabel);
-    toast({
-      title: res === 'added' ? 'Added to cart' : 'Quantity updated to ' + l.qty,
-      detail: p.title + (res === 'added' && qty > 1 ? ' × ' + qty : ''),
-      action: 'View cart', onAction: function () { opener = btn; openDrawer('cart'); }
-    });
+    var res = add(id, qty);                       // 'added' | 'updated' | 'max'
+    if (res !== 'max') flashButton(btn, flashLabel);
+    opener = btn;
+    openDrawer('cart', { added: { id: id, res: res } });
+    announce(res === 'added' ? p.title + ' added to cart' : res === 'updated' ? 'Quantity updated to ' + line(id).qty : 'Maximum ' + MAX + ' per order');
   }
 
   function onDetail() { return !!$('#pd-actions'); }
@@ -449,7 +457,7 @@
     else if ((b = t.closest('[data-remove]'))) {
       id = b.getAttribute('data-remove');
       var title = byId(id).title, idx = cart.map(function (x) { return x.id; }).indexOf(id);
-      remove(id); renderCart();
+      ctx.added = null; remove(id); renderCart();
       var next = $$('[data-line] [data-remove]', $('#sx-drawer'))[Math.min(idx, cart.length - 1)];
       (next || $('#sx-title')).focus({ preventScroll: true });
       toast({ title: 'Removed from cart', detail: title, action: 'Undo', onAction: function () { undoRemove(); if (drawerOpen && view === 'cart') renderCart(); } });
@@ -470,6 +478,7 @@
 
   /** Re-draw the cart but keep keyboard focus on the same control (or its neighbour if it became disabled). */
   function rerenderCart(id, attr) {
+    ctx.added = null;
     renderCart();
     var d = $('#sx-drawer');
     var again = $('[' + attr + '="' + id + '"]', d);
@@ -514,24 +523,16 @@
       if (about) setHTML(about, '<p class="font-semibold text-ink mb-1">About this item</p><p class="text-body">Contact our engineering team for full specifications, certification documents and availability for this ' + (p.cat === 'engineering' ? 'service' : 'product') + '.</p>');
     }
 
-    var priced = !!p.price;
     var qty = 1;
-    var tel = $('a[href^="tel:"]');
-    var telHref = tel ? tel.getAttribute('href') : 'tel:+97477090049';
-    var priceHTML = priced
-      ? '<p class="mt-6 text-[28px] font-extrabold text-[#1b2a4a]">' + money(p.price) + '</p><p class="text-xs text-faint">Excl. delivery. Final pricing is confirmed in your quotation.</p>'
-      : '<p class="mt-6 text-[18px] font-extrabold text-[#1b2a4a]">Price on request</p><p class="text-xs text-faint">Send a Sales Inquiry and our team will reply with a quotation.</p>';
     var base = 'inline-flex items-center justify-center gap-2 h-[48px] px-8 text-sm plex font-bold uppercase tracking-wide transition-colors';
     var primary = base + ' bg-red text-white hover:bg-[#970012]';
     var secondary = base + ' border border-bd text-ink hover:bg-warm3';
-    var actions = priced
-      ? '<div class="flex items-center gap-3" role="group" aria-label="Quantity"><button type="button" class="' + STEP + '" id="pd-dec" aria-label="Decrease quantity" disabled>−</button><span id="pd-qty" class="min-w-[24px] text-center text-[15px] font-bold" aria-live="polite">1</span><button type="button" class="' + STEP + '" id="pd-inc" aria-label="Increase quantity">+</button></div>' +
-        '<button type="button" class="' + primary + '" data-sx-add="' + esc(p.id) + '" data-flash>Add to Cart</button>' +
-        '<button type="button" class="' + secondary + '" data-sx-inquire="' + esc(p.id) + '" data-sx-from="details">Sales Inquiry</button>'
-      : '<button type="button" class="' + primary + '" data-sx-inquire="' + esc(p.id) + '" data-sx-from="details">Sales Inquiry ' + ARROW + '</button>' +
-        '<a href="' + esc(telHref) + '" class="' + secondary + '">Call Sales</a>';
-    setHTML(box, priceHTML + '<div class="flex flex-wrap items-center gap-4 mt-6">' + actions + '</div>' +
-      (priced ? '<p class="text-xs text-faint mt-3">Need volume pricing or delivery to site? Use <strong>Sales Inquiry</strong>.</p>' : ''));
+    setHTML(box,
+      '<p class="mt-6 text-sm text-body">Add this product to your cart to request a quotation with other items, or send a Sales Inquiry about this item only.</p>' +
+      '<div class="flex flex-wrap items-center gap-4 mt-5">' +
+      '<div class="flex items-center gap-3" role="group" aria-label="Quantity"><button type="button" class="' + STEP + '" id="pd-dec" aria-label="Decrease quantity" disabled>−</button><span id="pd-qty" class="min-w-[24px] text-center text-[15px] font-bold" aria-live="polite">1</span><button type="button" class="' + STEP + '" id="pd-inc" aria-label="Increase quantity">+</button></div>' +
+      '<button type="button" class="' + primary + '" data-sx-add="' + esc(p.id) + '" data-flash>Add to Cart</button>' +
+      '<button type="button" class="' + secondary + '" data-sx-inquire="' + esc(p.id) + '" data-sx-from="details">Sales Inquiry</button></div>');
 
     var dec = $('#pd-dec'), inc = $('#pd-inc'), out = $('#pd-qty');
     if (dec) {
@@ -559,5 +560,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 
-  SX.cart = { add: add, count: count, subtotal: subtotal, open: function () { openDrawer('cart'); } };
+  SX.cart = { add: add, count: count, open: function () { openDrawer('cart'); } };
 })();
