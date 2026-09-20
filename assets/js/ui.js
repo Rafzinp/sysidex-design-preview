@@ -323,17 +323,6 @@
     setHTML(el, '<div class="sx-marquee-track" style="--k:' + k + ';--dur:' + Math.max(24, list.length * 6) + 's">' + groups + '</div>');
   }
 
-  function initPause() {
-    document.querySelectorAll('[data-marquee-pause]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var m = btn.closest('section').querySelector('.sx-marquee');
-        var paused = m.classList.toggle('is-paused');
-        btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
-        btn.textContent = paused ? 'Play animation' : 'Pause animation';
-      });
-    });
-  }
-
   function initLogoGrid(el) {
     var kind = el.getAttribute('data-logo-grid');
     var list = SX.LOGOS[kind] || [];
@@ -359,7 +348,6 @@
     initRelated();
     document.querySelectorAll('[data-logos]').forEach(initMarquee);
     document.querySelectorAll('[data-logo-grid]').forEach(initLogoGrid);
-    initPause();
   }
   SX.ui = { art: art, cardHTML: cardHTML };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();

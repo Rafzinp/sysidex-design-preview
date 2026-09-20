@@ -13,8 +13,7 @@
 .sx-marquee-track { --k: 2; display: flex; width: max-content; animation: sx-scroll var(--dur, 40s) linear infinite; }
 .sx-marquee-group { display: flex; gap: 1rem; padding-right: 1rem; flex-shrink: 0; }
 .sx-marquee:hover .sx-marquee-track,
-.sx-marquee:focus-within .sx-marquee-track,
-.sx-marquee.is-paused .sx-marquee-track { animation-play-state: paused; }
+.sx-marquee:focus-within .sx-marquee-track { animation-play-state: paused; }
 @keyframes sx-scroll { to { transform: translateX(calc(-100% / var(--k))); } }
 @media (prefers-reduced-motion: reduce) {
   .sx-marquee { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
