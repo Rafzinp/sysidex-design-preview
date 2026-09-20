@@ -2,7 +2,7 @@
   Shared prototype styles (loaded after the Tailwind CDN).
 
   Radius scale (one value per component type):
-    card  12px  -> .rounded-card : cards, panels, media, FAQ items, logo tiles, tables
+    card   4px  -> .rounded-card : cards, panels, media, FAQ items, logo tiles, tables
     ctrl   8px  -> .rounded-lg   : inputs, selects, search, small icon buttons
     tag    6px  -> .rounded-md   : badges on top of images
     pill  full  -> .rounded-full : chips, filters, pagination dots
@@ -57,4 +57,20 @@ html.sx-lock { overflow: hidden; }
   .sx-drawer, .sx-drawer.is-open, .sx-scrim { transition: none; }
   .sx-toast, .sx-bump { animation: none; }
   .sx-spin { animation-duration: 1.6s; }
+}
+
+/* ---------- Home hero: on desktop the header, hero, stats row and "Trusted & Accredited" bar fit one screen ----------
+   --sx-chrome = header (158) + stats row (97) + accredited bar (75) + 2px slack. Type and spacing scale with the
+   viewport height, and the headline/lead use a wider measure so they wrap to fewer lines. */
+@media (min-width: 1024px) {
+  .sx-hero-in.sx-hero-in {
+    --sx-chrome: 332px;
+    min-height: clamp(280px, calc(100vh - var(--sx-chrome)), 700px);
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: clamp(20px, 4vh, 64px); padding-bottom: clamp(28px, 5vh, 128px);
+  }
+  .sx-hero-in > p.mb-6 { margin-bottom: clamp(10px, 2vh, 24px); }
+  .sx-hero-in .sx-h { font-size: clamp(30px, 6.2vh, 56px); max-width: 48rem; }
+  .sx-hero-in .sx-lead { font-size: clamp(14px, 2.2vh, 18px); margin-top: clamp(10px, 2vh, 24px); max-width: 40rem; }
+  .sx-hero-in .sx-cta { margin-top: clamp(16px, 3.5vh, 40px); }
 }
