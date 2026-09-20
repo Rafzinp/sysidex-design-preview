@@ -64,7 +64,7 @@ html.sx-lock { overflow: hidden; }
    viewport height, and the headline/lead use a wider measure so they wrap to fewer lines. */
 @media (min-width: 1024px) {
   .sx-hero-in.sx-hero-in {
-    --sx-chrome: 332px;
+    --sx-chrome: 282px;
     min-height: clamp(280px, calc(100vh - var(--sx-chrome)), 700px);
     display: flex; flex-direction: column; justify-content: center;
     padding-top: clamp(20px, 4vh, 64px); padding-bottom: clamp(28px, 5vh, 128px);
@@ -73,4 +73,60 @@ html.sx-lock { overflow: hidden; }
   .sx-hero-in .sx-h { font-size: clamp(30px, 6.2vh, 56px); max-width: 48rem; }
   .sx-hero-in .sx-lead { font-size: clamp(14px, 2.2vh, 18px); margin-top: clamp(10px, 2vh, 24px); max-width: 40rem; }
   .sx-hero-in .sx-cta { margin-top: clamp(16px, 3.5vh, 40px); }
+}
+@media (min-width: 1200px) { .sx-hero-in.sx-hero-in { --sx-chrome: 332px; } }
+
+/* ---------- Responsive menu (same behaviour as bushtorm.com) ----------
+   Below 1200px: hamburger (26x26, three 2px bars) opens a left slide-in panel, max 320px / 90% wide,
+   0.3s slide, dimmed backdrop, logo top-left, close top-right, "Menu | Categories" pill switch,
+   link rows with dividers and the contact details underneath. From 1200px the normal header/nav shows. */
+.sx-burger { position: relative; display: block; width: 26px; height: 26px; }
+.sx-burger > span, .sx-burger::before, .sx-burger::after { content: ""; position: absolute; left: 0; width: 100%; height: 2px; border-radius: 10px; background: #2b3990; }
+.sx-burger::before { top: 5px; }
+.sx-burger > span { top: 12px; }
+.sx-burger::after { bottom: 5px; }
+
+.sx-mm-backdrop { position: fixed; inset: 0; z-index: 110; background: rgba(0, 0, 0, .6); opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility 0s linear .3s; }
+.sx-mm-backdrop.is-open { opacity: .5; visibility: visible; transition: opacity .3s ease; }
+.sx-mm { position: fixed; top: 0; bottom: 0; left: 0; z-index: 111; display: flex; flex-direction: column; width: min(90%, 320px); background: #fff;
+  transform: translateX(-100%); visibility: hidden; transition: transform .3s ease-in-out, visibility 0s linear .3s; }
+.sx-mm.is-open { transform: none; visibility: visible; transition: transform .3s ease-in-out; }
+.sx-mm :focus-visible { outline: 2px solid #2b3990; outline-offset: 2px; }
+.sx-mm-logo { position: absolute; top: 20px; left: 20px; z-index: 2; max-width: 100px; }
+.sx-mm-logo img { display: block; max-width: 100%; height: auto; }
+.sx-mm-close { position: absolute; top: 20px; right: 20px; z-index: 2; width: 24px; height: 24px; color: #000; }
+.sx-mm-close::before, .sx-mm-close::after { content: ""; position: absolute; top: 50%; left: 2px; right: 2px; height: 2px; background: currentColor; border-radius: 2px; }
+.sx-mm-close::before { transform: rotate(45deg); }
+.sx-mm-close::after { transform: rotate(-45deg); }
+.sx-mm-close:hover { color: #2b3990; }
+.sx-mm-body { flex: 1 1 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 70px 20px 20px; }
+.sx-mm-search { display: flex; align-items: center; height: 40px; margin-bottom: 16px; background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
+.sx-mm-search button { flex: none; height: 100%; padding: 0 12px 0 14px; display: flex; align-items: center; }
+.sx-mm-search input { flex: 1; min-width: 0; height: 100%; padding-right: 12px; font-size: 15px; background: transparent; outline: none; }
+@media (min-width: 640px) { .sx-mm-search { display: none; } }
+.sx-mm-tabs { display: flex; height: 40px; border: 1px solid #e1e1e1; border-radius: 999px; }
+.sx-mm-tabs [role="tab"] { position: relative; flex: 1; font-size: 15px; font-weight: 600; color: #333e48; border-radius: 999px; }
+.sx-mm-tabs [role="tab"] + [role="tab"]::before { content: ""; position: absolute; left: 0; top: 50%; height: 20px; width: 1px; transform: translateY(-50%); background: #e1e1e1; }
+.sx-mm-tabs [role="tab"][aria-selected="true"] { color: #2b3990; }
+.sx-mm-pane { padding-top: 20px; }
+.sx-mm-list > li { padding: 2px 0; }
+.sx-mm-list > li:not(:last-child) { border-bottom: 1px solid #e1e1e1; }
+.sx-mm-row { display: flex; align-items: center; justify-content: space-between; }
+.sx-mm-link { flex: 1; display: block; min-height: 40px; line-height: 40px; font-size: 14px; font-weight: 600; color: #000; transition: color .2s; }
+.sx-mm-link:hover, .sx-mm-link[aria-current="page"] { color: #2b3990; }
+.sx-mm-cats .sx-mm-link { text-transform: uppercase; }
+.sx-mm-toggle { position: relative; flex: none; width: 40px; height: 40px; }
+.sx-mm-toggle::before, .sx-mm-toggle::after { content: ""; position: absolute; top: 50%; left: 50%; width: 12px; height: 2px; margin: -1px 0 0 -6px; background: #000; transition: transform .25s ease; }
+.sx-mm-toggle::after { transform: rotate(90deg); }
+.sx-mm-toggle[aria-expanded="true"]::after { transform: rotate(0deg); }
+.sx-mm-sub { padding: 0 0 8px 14px; }
+.sx-mm-sub a { display: block; min-height: 34px; line-height: 34px; font-size: 13px; color: #454652; transition: color .2s; }
+.sx-mm-sub a:hover { color: #2b3990; }
+.sx-mm-info { margin-top: 32px; font-size: 15px; line-height: 24px; color: #212529; }
+.sx-mm-info a { color: #333e48; }
+.sx-mm-info a:hover { color: #2b3990; }
+.sx-mm-info .sx-mm-quote { display: block; margin-top: 24px; height: 46px; line-height: 46px; text-align: center; background: #bb0017; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; font-family: 'IBM Plex Sans', sans-serif; }
+.sx-mm-info .sx-mm-quote:hover { background: #970012; color: #fff; }
+@media (prefers-reduced-motion: reduce) {
+  .sx-mm, .sx-mm.is-open, .sx-mm-backdrop, .sx-mm-backdrop.is-open { transition: none; }
 }
