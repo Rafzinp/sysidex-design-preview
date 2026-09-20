@@ -130,14 +130,23 @@ tailwind.config = {
     </div>
   </section>
 
-  <section class="bg-warm3 border-b border-bd">
-    <div class="max-w-[1440px] mx-auto px-6 md:px-16 py-8 flex flex-col md:flex-row items-center gap-8">
-      <p class="text-sm plex uppercase tracking-wide text-faint shrink-0">Trusted &amp; Accredited</p>
-      <div class="flex flex-wrap items-center gap-10 grayscale opacity-80">
-        <img src="../assets/icons/badge-egac.png" alt="EGAC Accreditation" width="84" height="64">
-        <img src="../assets/icons/badge-iaf.png" alt="IAF Member — Multilateral Recognition Arrangement" width="84" height="64">
-        <img src="../assets/icons/badge-qro.png" alt="QRO — Quality Research Organization" width="84" height="64">
-      </div>
+  <section class="bg-warm3 border-b border-bd" aria-labelledby="accredited-title">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-16 py-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-10">
+      <h2 id="accredited-title" class="plex font-medium text-sm uppercase tracking-[3px] leading-normal text-faint shrink-0">Trusted &amp;<br class="hidden lg:block"> Accredited</h2>
+      <ul class="grid gap-x-6 gap-y-5 sm:grid-cols-3 lg:w-[770px] lg:gap-x-3">
+      <li class="flex items-center gap-3">
+        <span class="relative h-10 w-[39px] shrink-0 overflow-hidden" aria-hidden="true"><img src="../assets/icons/badge-egac.png" alt="" class="absolute max-w-none grayscale mix-blend-multiply h-full left-[-16.33%] top-0 w-[134.7%]"></span>
+        <span class="plex font-medium text-xs uppercase leading-snug text-faint">Egyptian General<br class="hidden lg:block"> Accreditation Council</span>
+      </li>
+      <li class="flex items-center gap-3">
+        <span class="relative h-10 w-[65px] shrink-0 overflow-hidden" aria-hidden="true"><img src="../assets/icons/badge-iaf.png" alt="" class="absolute max-w-none grayscale mix-blend-multiply h-[142.22%] left-[-5.02%] top-[-28.89%] w-[115.39%]"></span>
+        <span class="plex font-medium text-xs uppercase leading-snug text-faint">International<br class="hidden lg:block"> Accreditation Forum</span>
+      </li>
+      <li class="flex items-center gap-3">
+        <span class="relative h-10 w-[46px] shrink-0 overflow-hidden" aria-hidden="true"><img src="../assets/icons/badge-qro.png" alt="" class="absolute max-w-none grayscale mix-blend-multiply h-full left-[-5.85%] top-0 w-[115.79%]"></span>
+        <span class="plex font-medium text-xs uppercase leading-snug text-faint">ISO Certified<br class="hidden lg:block"> Quality Management</span>
+      </li>
+      </ul>
     </div>
   </section>
 
