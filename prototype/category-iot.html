@@ -74,11 +74,9 @@ tailwind.config = {
     <a href="index.html" class="shrink-0">
       <img src="../assets/images/logo-sysidex.png" alt="Sysidex" width="98" height="40">
     </a>
-    <form action="products.html" class="flex-1 hidden md:flex items-stretch h-12 max-w-2xl bg-[#f3f4f6] border border-[#e5e7eb] rounded-lg overflow-hidden" onsubmit="return true;">
-      <input type="search" name="q" placeholder="Search for products, codes, or specs..." class="flex-1 pl-5 pr-4 text-[15px] bg-transparent outline-none placeholder:text-[#9ca3af]">
-      <button type="submit" aria-label="Search" class="px-[22px] flex items-center justify-center bg-blue hover:bg-[#222f78] transition-colors">
-        <img src="../assets/icons/icon-search.svg" alt="" width="18" height="18">
-      </button>
+    <form action="products.html" role="search" class="flex-1 min-w-0 flex items-center max-w-[672px] h-[40px] bg-[#f3f4f6] border border-[#e5e7eb] rounded-lg overflow-hidden focus-within:border-blue focus-within:ring-1 focus-within:ring-blue transition-colors">
+      <button type="submit" aria-label="Search" class="shrink-0 h-full pl-[18px] pr-3 flex items-center"><img src="../assets/icons/icon-search-navy.svg" alt="" width="18" height="18"></button>
+      <input type="search" name="q" placeholder="Search for products, codes, or specs..." aria-label="Search products" class="flex-1 min-w-0 h-full pr-4 text-[15px] text-ellipsis bg-transparent outline-none placeholder:text-[#9ca3af]">
     </form>
     <div class="flex items-center gap-6 ml-auto shrink-0">
       <button type="button" data-sx-cart aria-haspopup="dialog" aria-label="Open cart, 0 items" class="relative flex items-center gap-2.5 plex text-sm">
